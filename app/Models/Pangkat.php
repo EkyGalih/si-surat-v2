@@ -13,7 +13,7 @@ class Pangkat extends Model
     protected $table = 'pangkat';
     protected $guarded = ['created_at', 'updated_at'];
 
-    public function Pangkat()
+    public function pegawai()
     {
         return $this->hasOne(Pegawai::class);
     }

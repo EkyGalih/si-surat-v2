@@ -56,18 +56,25 @@
                                 <td>{{ $user->Pegawai->name ?? '-' }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->Pegawai->Bidang->nama_bidang }}</td>
-                                <td>{{ $user->level }}</td>
+                                <td>
+                                    @if ($user->level == 'admin')
+                                    <span style="color: #FFFFFF;" class="badge bg-success">Administrator</span>
+                                    @elseif ($user->level == 'pimpinan')
+                                    <span style="color: #FFFFFF;" class="badge bg-info">Pimpinan</span>
+                                    @elseif ($user->level == 'agendaris')
+                                    <span style="color: #FFFFFF;" class="badge bg-primary">Agendaris</span>
+                                    @elseif ($user->level == 'user')
+                                    <span style="color: #FFFFFF;" class="badge bg-secondary">Pengguna</span>
+                                    @endif
+                                </td>
                                 <td>{{ Helpers::getDate($user->created_at) . ' ' . Helpers::getTime($user->created_at) }}
                                 </td>
                                 <td style="text-align: center;">
                                     <a href="{{ route('admin-user.edit', $user->id) }}" class="btn btn-warning btn-sm"
                                         data-bs-tooltip="tooltip" data-placement="top" title="Ubah data user">
-                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-user"><sup style="font-size: 12px;"><i class="fa fa-edit"></i></sup></i>
                                     </a>
-                                    <a href="{{ url('reset_pass/' . $user->id) }}" class="btn btn-info btn-sm"
-                                        data-bs-tooltip="tooltip" data-placement="top" title="Reset password">
-                                        <i class="fa fa-lock fa-fw"></i>
-                                    </a>
+                                    <a href="{{ route('admin-user.show', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-user"><sup style="font-size: 12px;"><i class="fa fa-list"></i></sup></i></a>
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                         data-target="#HapusUser{{ $loop->iteration }}">
