@@ -29,24 +29,16 @@
             <a href="{{ route('admin-user.create') }}" class="btn btn-secondary btn-sm" style="float: right;"><i
                     class="fa fa-user-plus"></i> Tambah Pengguna</a>
             <div class="table-responsive">
-                <table class="table table-striped table-bordered dataTable no-footer dtr-inline" id="table-pengguna"
-                    role="grid" aria-describedby="datatable-buttons_info">
+                <table class="table table-striped table-bordered">
                     <thead>
-                        <tr role="row">
-                            <th class="bSorted" tabindex="0" aria-controls="datatable-responsive" aria-sort="ascending"
-                                aria-label="Name: activate to sort column descending">No</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatable-responsive"
-                                aria-label="Position: activate to sort column ascending">Nama Pengguna</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatable-responsive"
-                                aria-label="Position: activate to sort column ascending">Username</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatable-responsive"
-                                aria-label="Office: activate to sort column ascending">Bidang</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatable-responsive"
-                                aria-label="Start date: activate to sort column ascending">Jenis User</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatable-responsive"
-                                aria-label="Age: activate to sort column ascending">Bergabung pada</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatable-responsive"
-                                aria-label="Start date: activate to sort column ascending">Tools</th>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Pengguna</th>
+                            <th>Username</th>
+                            <th>Bidang</th>
+                            <th>Jenis User</th>
+                            <th>Bergabung pada</th>
+                            <th>Tools</th>
                         </tr>
                     </thead>
                     <tbody>

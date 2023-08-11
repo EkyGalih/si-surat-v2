@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Pegawai;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,5 +63,12 @@ class Helpers
 
             return date("g:i A", strtotime($time));
         }
+    }
+
+    // count pegawai
+    public static function PegawaiCount($param)
+    {
+        $pegawai = Pegawai::where('bidang_id', '=', $param)->count();
+        return $pegawai;
     }
 }

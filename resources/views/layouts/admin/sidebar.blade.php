@@ -13,7 +13,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('admin-bidang.index') }}">
                 <i class="fa fa-building"></i> Bidang
             </a>
         </li>

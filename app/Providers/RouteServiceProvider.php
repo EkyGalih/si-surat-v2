@@ -2,10 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -35,6 +32,7 @@ class RouteServiceProvider extends ServiceProvider
 
         // routes admin
         $this->AdminUser();
+        $this->AdminBidang();
     }
 
     public function AdminUser()
@@ -42,6 +40,13 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/admin/pengguna.php'));
+    }
+
+    public function AdminBidang()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/admin/bidang.php'));
     }
 
     public function mapWebRoutes()
