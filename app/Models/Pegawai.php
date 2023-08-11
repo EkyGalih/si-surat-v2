@@ -22,4 +22,14 @@ class Pegawai extends Model
     {
         return $this->belongsTo(Golongan::class);
     }
+
+    public function Bidang()
+    {
+        return $this->belongsTo(Bidang::class);
+    }
+
+    public function User()
+    {
+        return $this->hasOne(User::class);
+    }
 }

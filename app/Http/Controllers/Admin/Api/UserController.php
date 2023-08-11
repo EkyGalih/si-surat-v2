@@ -26,7 +26,7 @@ class UserController extends Controller
     {
         try {
             $pegawai = Pegawai::join('bidang', 'pegawai.bidang_id', '=', 'bidang.id')
-                    ->select('pegawai.nip', 'bidang.nama_bidang', 'pegawai.foto')
+                    ->select('pegawai.name', 'pegawai.nip', 'bidang.nama_bidang', 'pegawai.foto')
                     ->where('pegawai.id', '=', $id)
                     ->first();
             $response = [

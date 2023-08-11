@@ -1,7 +1,7 @@
 @extends('admin.index')
 @section('title', 'Pengguna')
 @section('additional-css')
-<link rel="stylesheet" href="{{ asset('vendors/simple-datatables/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/simple-datatables/style.css') }}">
 @endsection
 @section('content')
     <div class="right_col" role="main">
@@ -26,7 +26,8 @@
                 </ul>
                 <div class="clearfix"></div>
             </div>
-            <a href="{{ route('admin-user.create') }}" class="btn btn-secondary submit" style="float: right;"><i class="fa fa-user-plus"></i> Tambah Pengguna</a>
+            <a href="{{ route('admin-user.create') }}" class="btn btn-secondary btn-sm" style="float: right;"><i
+                    class="fa fa-user-plus"></i> Tambah Pengguna</a>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered dataTable no-footer dtr-inline" id="table-pengguna"
                     role="grid" aria-describedby="datatable-buttons_info">
@@ -52,13 +53,14 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->nama_lengkap }}</td>
+                                <td>{{ $user->Pegawai->name ?? '-' }}</td>
                                 <td>{{ $user->username }}</td>
-                                <td>{{ $user->Bidang->nama_bidang }}</td>
+                                <td>{{ $user->Pegawai->Bidang->nama_bidang }}</td>
                                 <td>{{ $user->level }}</td>
-                                <td>{{ Helpers::getDate($user->created_at) .' '. Helpers::getTime($user->created_at) }}</td>
+                                <td>{{ Helpers::getDate($user->created_at) . ' ' . Helpers::getTime($user->created_at) }}
+                                </td>
                                 <td style="text-align: center;">
-                                    <a href="{{ url('user/' . $user->id . '/edit') }}" class="btn btn-warning btn-sm"
+                                    <a href="{{ route('admin-user.edit', $user->id) }}" class="btn btn-warning btn-sm"
                                         data-bs-tooltip="tooltip" data-placement="top" title="Ubah data user">
                                         <i class="fa fa-edit"></i>
                                     </a>
@@ -66,10 +68,14 @@
                                         data-bs-tooltip="tooltip" data-placement="top" title="Reset password">
                                         <i class="fa fa-lock fa-fw"></i>
                                     </a>
+                                    <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#KonfHapus{{ $loop->iteration }}"><i data-bs-tooltip="tooltip"
-                                            data-placement="top" title="Hapus user" class="fa fa-trash-o"></i>
-                                        </button>
+                                        data-target="#HapusUser{{ $loop->iteration }}">
+                                        <i class="fa fa-user"><sup style="font-size: 12px"><i class="fa fa-times"></i></sup></i>
+                                    </button>
+
+                                    <!-- Modal -->
+                                    @include('Admin.pengguna.addons._delete')
                                 </td>
                             </tr>
                             <div class="modal fade" id="KonfHapus{{ $loop->iteration }}" role="dialog"
@@ -78,7 +84,8 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h4 align="center">
-                                                <font color="D43F3A"><label class="fa fa-trash"></label></font> Anda Yakin?
+                                                <font color="D43F3A"><label class="fa fa-trash"></label></font> Anda
+                                                Yakin?
                                             </h4>
                                         </div>
                                         <div class="modal-body">
@@ -106,10 +113,10 @@
     </div>
 @endsection
 @section('additional-js')
-<script src="{{ asset('vendors/simple-datatables/simple-datatables.js') }}"></script>
-<script>
-    $(document).ready(function() {
-         $('#table-pengguna').DataTable();
-     });
-</script>
+    <script src="{{ asset('vendors/simple-datatables/simple-datatables.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table-pengguna').DataTable();
+        });
+    </script>
 @endsection

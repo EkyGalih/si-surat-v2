@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Webpatser\Uuid\Uuid;
 
 class User extends Authenticatable
 {
@@ -25,6 +26,15 @@ class User extends Authenticatable
         'updated_at'
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->id = (string)Uuid::generate(4);
+        });
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -35,8 +45,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function Bidang()
+    public function Pegawai()
     {
-        return $this->belongsTo(Bidang::class);
+        return $this->belongsTo(Pegawai::class);
     }
 }

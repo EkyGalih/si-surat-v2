@@ -36,6 +36,9 @@
 <script src="{{ asset('vendors/moment/min/moment.min.js') }}"></script>
 <script src="{{ asset('vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
+{{-- sweet alert --}}
+<script src="{{ asset('vendors/sweet-alert/sweet-alert.min.js') }}"></script>
+@include('layouts.sweet-alert-notification')
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('build/js/custom.min.js') }}"></script>
 @yield('additional-js')

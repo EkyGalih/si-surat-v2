@@ -12,7 +12,7 @@ class Bidang extends Model
     public $incrementing = false;
     protected $guarded = ['created_at', 'updated_at'];
 
-    public function User()
+    public function Pegawai()
     {
         return $this->hasOne(User::class);
     }

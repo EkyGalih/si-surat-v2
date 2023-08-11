@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Pegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,7 +35,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'nama_lengkap' => $request->nama_lengkap,
+            'level' => $request->level,
+            'pegawai_id' => $request->pegawai_id,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'foto' => $request->foto
+        ]);
+        return redirect()->route('admin-user.index')->with(['success' => 'Pengguna berhasil dibuat!']);
     }
 
     /**
@@ -50,7 +59,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $pegawai = Pegawai::get();
+
+        return view('Admin.pengguna.components.edit', compact('user', 'pegawai'));
     }
 
     /**
@@ -58,7 +70,15 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update([
+            'nama_lengkap' => $request->nama_lengkap,
+            'level' => $request->level,
+            'pegawai_id' => $request->pegawai_id,
+            'username' => $request->username,
+            'foto' => $request->foto
+        ]);
+        return redirect()->route('admin-user.index')->with(['success' => 'Pengguna berhasil diperbaharui!']);
     }
 
     /**
@@ -66,6 +86,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin-user.index')->with(['success' => 'Pengguna berhasil dihapus!']);
     }
 }
