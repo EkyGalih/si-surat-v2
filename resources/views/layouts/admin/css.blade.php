@@ -16,3 +16,4 @@
 
 <!-- Custom Theme Style -->
 <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
+@yield('additional-css')

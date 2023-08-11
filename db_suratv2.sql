@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 10 Agu 2023 pada 08.29
+-- Waktu pembuatan: 11 Agu 2023 pada 07.40
 -- Versi server: 5.7.33
 -- Versi PHP: 8.1.7
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bidang` (
-  `id` char(36) COLLATE utf8mb4_bin NOT NULL,
-  `nama_bidang` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_bidang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `bidang`
@@ -60,7 +60,7 @@ INSERT INTO `bidang` (`id`, `nama_bidang`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `distribusi` (
-  `id` int(11) NOT NULL,
+  `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tujuan` int(10) UNSIGNED NOT NULL,
   `smund_id` int(11) UNSIGNED DEFAULT NULL,
   `smumum_id` int(11) UNSIGNED DEFAULT NULL,
@@ -74,34 +74,34 @@ CREATE TABLE `distribusi` (
 --
 
 INSERT INTO `distribusi` (`id`, `tujuan`, `smund_id`, `smumum_id`, `status_baca`, `created_at`, `updated_at`) VALUES
-(1, 3, NULL, 10, 'unread', '2017-08-20 06:54:06', '2017-08-20 06:54:06'),
-(2, 2, 2, NULL, 'unread', '2017-08-20 18:06:25', '2017-08-20 18:06:25'),
-(3, 5, 3, NULL, 'unread', '2017-08-20 18:07:20', '2017-08-20 18:07:20'),
-(4, 9, 4, NULL, 'unread', '2017-08-20 18:08:04', '2017-08-20 18:08:04'),
-(5, 7, 5, NULL, 'unread', '2017-08-20 18:09:22', '2017-08-20 18:09:22'),
-(6, 12, 6, NULL, 'unread', '2017-08-20 18:09:50', '2017-08-20 18:09:50'),
-(7, 4, 7, NULL, 'unread', '2017-08-20 18:10:19', '2017-08-20 18:10:19'),
-(8, 13, 8, NULL, 'unread', '2017-08-20 18:10:38', '2017-08-20 18:10:38'),
-(9, 4, 9, NULL, 'unread', '2017-08-20 18:11:12', '2017-08-20 18:11:12'),
-(10, 8, 9, NULL, 'unread', '2017-08-20 18:11:12', '2017-08-20 18:11:12'),
-(11, 2, 10, NULL, 'unread', '2017-08-20 18:11:43', '2017-08-20 18:11:43'),
-(12, 1, 11, NULL, 'read', '2017-08-20 18:12:09', '2017-08-20 18:53:55'),
-(13, 2, NULL, 1, 'unread', '2017-08-20 18:18:47', '2017-08-20 18:18:47'),
-(14, 2, NULL, 2, 'unread', '2017-08-20 18:20:33', '2017-08-20 18:20:33'),
-(15, 7, NULL, 2, 'unread', '2017-08-20 18:20:33', '2017-08-20 18:20:33'),
-(16, 4, NULL, 3, 'unread', '2017-08-20 18:21:18', '2017-08-20 18:21:18'),
-(17, 8, NULL, 3, 'unread', '2017-08-20 18:21:19', '2017-08-20 18:21:19'),
-(18, 2, NULL, 4, 'unread', '2017-08-20 18:21:58', '2017-08-20 18:21:58'),
-(19, 8, NULL, 4, 'unread', '2017-08-20 18:21:58', '2017-08-20 18:21:58'),
-(20, 2, NULL, 5, 'unread', '2017-08-20 18:23:01', '2017-08-20 18:23:01'),
-(21, 8, NULL, 5, 'unread', '2017-08-20 18:23:01', '2017-08-20 18:23:01'),
-(22, 2, NULL, 6, 'unread', '2017-08-20 18:23:27', '2017-08-20 18:23:27'),
-(23, 1, NULL, 7, 'read', '2017-08-20 18:23:57', '2017-08-20 18:27:51'),
-(24, 12, NULL, 8, 'unread', '2017-08-20 18:24:35', '2017-08-20 18:24:35'),
-(25, 6, NULL, 9, 'unread', '2017-08-20 18:25:08', '2017-08-20 18:25:08'),
-(26, 7, NULL, 9, 'unread', '2017-08-20 18:25:08', '2017-08-20 18:25:08'),
-(27, 1, 12, NULL, 'unread', '2017-08-21 00:38:06', '2017-08-21 00:38:06'),
-(28, 4, 12, NULL, 'unread', '2017-08-21 00:38:07', '2017-08-21 00:38:07');
+('1', 3, NULL, 10, 'unread', '2017-08-20 06:54:06', '2017-08-20 06:54:06'),
+('10', 8, 9, NULL, 'unread', '2017-08-20 18:11:12', '2017-08-20 18:11:12'),
+('11', 2, 10, NULL, 'unread', '2017-08-20 18:11:43', '2017-08-20 18:11:43'),
+('12', 1, 11, NULL, 'read', '2017-08-20 18:12:09', '2017-08-20 18:53:55'),
+('13', 2, NULL, 1, 'unread', '2017-08-20 18:18:47', '2017-08-20 18:18:47'),
+('14', 2, NULL, 2, 'unread', '2017-08-20 18:20:33', '2017-08-20 18:20:33'),
+('15', 7, NULL, 2, 'unread', '2017-08-20 18:20:33', '2017-08-20 18:20:33'),
+('16', 4, NULL, 3, 'unread', '2017-08-20 18:21:18', '2017-08-20 18:21:18'),
+('17', 8, NULL, 3, 'unread', '2017-08-20 18:21:19', '2017-08-20 18:21:19'),
+('18', 2, NULL, 4, 'unread', '2017-08-20 18:21:58', '2017-08-20 18:21:58'),
+('19', 8, NULL, 4, 'unread', '2017-08-20 18:21:58', '2017-08-20 18:21:58'),
+('2', 2, 2, NULL, 'unread', '2017-08-20 18:06:25', '2017-08-20 18:06:25'),
+('20', 2, NULL, 5, 'unread', '2017-08-20 18:23:01', '2017-08-20 18:23:01'),
+('21', 8, NULL, 5, 'unread', '2017-08-20 18:23:01', '2017-08-20 18:23:01'),
+('22', 2, NULL, 6, 'unread', '2017-08-20 18:23:27', '2017-08-20 18:23:27'),
+('23', 1, NULL, 7, 'read', '2017-08-20 18:23:57', '2017-08-20 18:27:51'),
+('24', 12, NULL, 8, 'unread', '2017-08-20 18:24:35', '2017-08-20 18:24:35'),
+('25', 6, NULL, 9, 'unread', '2017-08-20 18:25:08', '2017-08-20 18:25:08'),
+('26', 7, NULL, 9, 'unread', '2017-08-20 18:25:08', '2017-08-20 18:25:08'),
+('27', 1, 12, NULL, 'unread', '2017-08-21 00:38:06', '2017-08-21 00:38:06'),
+('28', 4, 12, NULL, 'unread', '2017-08-21 00:38:07', '2017-08-21 00:38:07'),
+('3', 5, 3, NULL, 'unread', '2017-08-20 18:07:20', '2017-08-20 18:07:20'),
+('4', 9, 4, NULL, 'unread', '2017-08-20 18:08:04', '2017-08-20 18:08:04'),
+('5', 7, 5, NULL, 'unread', '2017-08-20 18:09:22', '2017-08-20 18:09:22'),
+('6', 12, 6, NULL, 'unread', '2017-08-20 18:09:50', '2017-08-20 18:09:50'),
+('7', 4, 7, NULL, 'unread', '2017-08-20 18:10:19', '2017-08-20 18:10:19'),
+('8', 13, 8, NULL, 'unread', '2017-08-20 18:10:38', '2017-08-20 18:10:38'),
+('9', 4, 9, NULL, 'unread', '2017-08-20 18:11:12', '2017-08-20 18:11:12');
 
 -- --------------------------------------------------------
 
@@ -153,17 +153,17 @@ INSERT INTO `file_surat_keluar` (`id`, `staff_bagian`, `perihal`, `file`, `statu
 --
 
 CREATE TABLE `golongan` (
-  `uuid` char(36) COLLATE utf8mb4_bin NOT NULL,
-  `nama_golongan` varchar(150) COLLATE utf8mb4_bin NOT NULL,
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_golongan` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `golongan`
 --
 
-INSERT INTO `golongan` (`uuid`, `nama_golongan`, `created_at`, `updated_at`) VALUES
+INSERT INTO `golongan` (`id`, `nama_golongan`, `created_at`, `updated_at`) VALUES
 ('0d566aec-3701-4c00-9cb8-7ed7b63832e3', 'Pengatur Muda', '2023-01-05 02:37:46', '2023-01-05 02:37:46'),
 ('262834f6-d889-4631-8559-c90779bd00b7', 'Penata Tingkat I', '2023-01-05 02:38:22', '2023-01-05 02:38:22'),
 ('2973e6ce-4b11-4c04-8fc2-9492c5ca44f9', 'Penata Muda', '2023-01-05 02:38:09', '2023-01-05 02:38:09'),
@@ -220,17 +220,17 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `pangkat` (
-  `uuid` char(36) COLLATE utf8mb4_bin NOT NULL,
-  `nama_pangkat` varchar(150) COLLATE utf8mb4_bin NOT NULL,
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_pangkat` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `pangkat`
 --
 
-INSERT INTO `pangkat` (`uuid`, `nama_pangkat`, `created_at`, `updated_at`) VALUES
+INSERT INTO `pangkat` (`id`, `nama_pangkat`, `created_at`, `updated_at`) VALUES
 ('154abb69-b672-45fd-8397-0d96afbe9766', 'II/A', '2023-01-05 02:35:47', '2023-01-05 02:35:47'),
 ('254f8ec9-5441-4749-acf9-da7b5043875e', 'III/A', '2023-01-05 02:36:04', '2023-01-05 02:36:04'),
 ('462ee31c-1842-4137-824f-dd3cdee91b47', 'IV/D', '2023-01-05 02:36:45', '2023-01-05 02:36:45'),
@@ -256,40 +256,40 @@ INSERT INTO `pangkat` (`uuid`, `nama_pangkat`, `created_at`, `updated_at`) VALUE
 --
 
 CREATE TABLE `pegawai` (
-  `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nip` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jenis_pegawai` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tempat_lahir` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tanggal_lahir` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_jabatan` enum('pegawai','kaban','kabag','kasubag','sekban') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pegawai',
-  `jabatan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `initial_jabatan` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `masa_kerja_golongan` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `diklat` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `pendidikan` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `no_sk` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `no_rekening` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nama_rekening` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nip` varchar(18) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jenis_pegawai` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tempat_lahir` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal_lahir` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_jabatan` enum('pegawai','kaban','kabag','kasubag','sekban') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pegawai',
+  `jabatan` text COLLATE utf8mb4_unicode_ci,
+  `initial_jabatan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `masa_kerja_golongan` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `diklat` text COLLATE utf8mb4_unicode_ci,
+  `pendidikan` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_sk` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_rekening` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_rekening` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `umur` int(11) NOT NULL,
-  `jenis_kelamin` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `agama` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kenaikan_pangkat` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jenis_kelamin` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agama` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kenaikan_pangkat` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `batas_pensiun` int(11) DEFAULT NULL,
-  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
-  `pangkatUuid` char(36) COLLATE utf8mb4_bin DEFAULT NULL,
-  `golonganUuid` char(36) COLLATE utf8mb4_bin DEFAULT NULL,
-  `bidangUuid` char(36) COLLATE utf8mb4_bin DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `pangkat_id` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `golongan_id` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bidang_id` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `tanggal_lahir`, `nama_jabatan`, `jabatan`, `initial_jabatan`, `masa_kerja_golongan`, `diklat`, `pendidikan`, `no_sk`, `no_rekening`, `nama_rekening`, `umur`, `jenis_kelamin`, `agama`, `kenaikan_pangkat`, `batas_pensiun`, `foto`, `url`, `createdAt`, `updatedAt`, `pangkatUuid`, `golonganUuid`, `bidangUuid`) VALUES
+INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `tanggal_lahir`, `nama_jabatan`, `jabatan`, `initial_jabatan`, `masa_kerja_golongan`, `diklat`, `pendidikan`, `no_sk`, `no_rekening`, `nama_rekening`, `umur`, `jenis_kelamin`, `agama`, `kenaikan_pangkat`, `batas_pensiun`, `foto`, `url`, `createdAt`, `updatedAt`, `pangkat_id`, `golongan_id`, `bidang_id`) VALUES
 ('0282d54a-de97-4adf-8a6a-32ef4d0aaae3', '197407142009011001', 'pns', 'L. RESTU ATMULYADI, S.Sos', 'Puyung Loteng', '1974-07-14', 'kasubag', 'Kasubag. Umum [Struktural Jabatan Pengawas]( 06-10-2021 )', 'Sekretariat - Umum', '17 thn,\r\n5 bln', '-', 'Sarjana Ilmu Administrasi Universitas Muhammadiyah( 1998 )', NULL, NULL, NULL, 47, 'pria', 'islam', '-', 2032, '84f36ce0570c395d693210b50a341d96.jpg', 'http://localhost:5000/images/84f36ce0570c395d693210b50a341d96.jpg', '2023-01-12 09:26:50', '2023-01-12 04:07:57', 'bb42d0b6-bdd4-428c-b094-4c964f9fb288', '262834f6-d889-4631-8559-c90779bd00b7', '1f30e9ae-9f1a-4026-86d7-9384ae70241b'),
 ('044dede6-7d8e-40a0-b456-ad630f0b700f', '198504162010011002', 'pns', 'HAERUL FACHRI', 'Kenawa Loteng', '1985-04-16', 'pegawai', 'Peng administrasi [Fungsional Umum -]( 04-09-2015 )', NULL, '16 thn,\r\n0 bln', 'Diklat Prajabatan Golongan I dan II ( - )\r\n[ Badan Kepegawaian Daerah dan Pendidikan Pelatihan Provinsi NTB ]\r\n( 2011 )', 'SMA IPS SMU Negeri 3 Mataram( 2003 )', NULL, NULL, NULL, 36, 'pria', 'islam', '1 Oktober 2023', 2043, '1ac45046afa644142082e61e02d60e7f.jpg', 'http://localhost:5000/images/1ac45046afa644142082e61e02d60e7f.jpg', '2023-01-12 09:26:48', '2023-01-12 04:29:59', 'c2df4423-fcab-4825-8ba8-648aecd9976b', 'b6b51f6f-3132-496a-88e0-1130065a0d72', 'f60b5439-5d63-4c1e-8f28-9e4940619244'),
 ('048ea851-c358-4df2-8484-eb778526ef37', '198212312008011028', 'pns', 'MAWARDI', 'Pohgadinfg Lotim', '1982-12-31', 'pegawai', 'Peng administrasi[Fungsional Umum -]( 01-06-2019 )', NULL, '19 thn,\r\n0 bln', '-', 'SMA IPS SMUN 1( 2001 )', NULL, NULL, NULL, 39, 'pria', 'islam', 'Monday, April 1, 2024', 2039, '16bdced3cbf08a216e2effeb910b2fc4.jpg', 'http://localhost:5000/images/16bdced3cbf08a216e2effeb910b2fc4.jpg', '2023-01-12 09:26:50', '2023-01-12 04:20:20', 'b58eb1f4-55a4-4cae-9709-b50565c2a073', '9fd0fb38-c19d-43f7-8955-b09a95de1506', '79530810-bc72-4bcd-9d45-a9180151abf6'),
@@ -372,7 +372,7 @@ INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `ta
 ('6328166a-076b-4a24-8eb2-9ae4df6a78f7', '198607252010011009', NULL, 'M. JULHAM RINALDI, S.Pt, M.Ak', 'Mataram', '1986-07-25', 'pegawai', 'Analis Keuangan [Fungsional Umum -] ( 01-01-2020 )', NULL, '12 thn, 03 bln', '-', 'Pasca Sarjana Magister Akuntansi Universitas Mataram ( 2018 )', NULL, NULL, NULL, 36, 'pria', 'islam', '-', 2039, 'e78ab5edc12d000ee2242204e6a744e1.jpg', 'http://localhost:5000/images/e78ab5edc12d000ee2242204e6a744e1.jpg', '2023-01-13 02:26:39', '2023-01-13 02:26:39', 'bb42d0b6-bdd4-428c-b094-4c964f9fb288', '262834f6-d889-4631-8559-c90779bd00b7', 'c639a8a5-9159-4c17-9b59-427865c6b4ed'),
 ('65123669-FB80-E79A-FD87-EB4A4AD41F90', NULL, 'kontrak', 'Eky Galih Gunanda, S.Kom', 'Dasan Lekong', '1995-01-05', 'pegawai', 'Tenaga Teknologi & Informasi', NULL, '2 Thn, 5 bln', NULL, 'Sarjana Teknik Informatika STMIK Bumigora Mataram(2018)', '910/02/BPKAD/2030', '001.02.05828.31-9', 'Bank NTB Syariah', 28, 'pria', 'islam', NULL, NULL, 'c3459a1517b2aadeb70b4b17d94c4acc.jpg', 'http://localhost:5000/images/c3459a1517b2aadeb70b4b17d94c4acc.jpg', '2023-01-12 13:49:48', '2023-01-12 06:39:30', NULL, NULL, '988226b4-0cd4-4547-a218-25dd9c436520'),
 ('65385662-35A6-A12B-60C9-65B590B33207', NULL, 'kontrak', 'Rima Susmiati', 'Batuyang', '1990-06-06', 'pegawai', 'Tenaga Administrasi', NULL, '- thn, 0 bln', NULL, 'SMAN 1 Pringgabaya Ilmu Sosial', '910/39.a/BPKAD/2020', '001.22.19460.10-0', 'Bank NTB Syariah', 32, 'wanita', 'islam', NULL, NULL, 'bac78d0252970a77f35efee974a6ea39.jpg', 'http://localhost:5000/images/bac78d0252970a77f35efee974a6ea39.jpg', '2023-01-12 13:49:50', '2023-01-12 08:17:55', NULL, NULL, '454adcee-d791-40dc-adb5-bf4d029e7736');
-INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `tanggal_lahir`, `nama_jabatan`, `jabatan`, `initial_jabatan`, `masa_kerja_golongan`, `diklat`, `pendidikan`, `no_sk`, `no_rekening`, `nama_rekening`, `umur`, `jenis_kelamin`, `agama`, `kenaikan_pangkat`, `batas_pensiun`, `foto`, `url`, `createdAt`, `updatedAt`, `pangkatUuid`, `golonganUuid`, `bidangUuid`) VALUES
+INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `tanggal_lahir`, `nama_jabatan`, `jabatan`, `initial_jabatan`, `masa_kerja_golongan`, `diklat`, `pendidikan`, `no_sk`, `no_rekening`, `nama_rekening`, `umur`, `jenis_kelamin`, `agama`, `kenaikan_pangkat`, `batas_pensiun`, `foto`, `url`, `createdAt`, `updatedAt`, `pangkat_id`, `golongan_id`, `bidang_id`) VALUES
 ('665f2eac-a3df-4efb-b95f-45c1e6eb9bd8', '199410062015072001', 'pns', 'BAIQ AYUNINGSIH, S.STP, MM', 'Lotim', '1994-10-06', 'pegawai', 'Peng administrasi [Fungsional Umum -]( 31-07-2019 )', NULL, '5 thn,\r\n6 bln', 'Pendidikan dan Pelatihan Prajabatan Golongan III (Diklat Prajab III)\r\n( - )\r\n[ Badan Pengembangan Sumberdaya Manusia ]\r\n( 2015 )', 'Pasca Sarjana Magister Manajemen Universitas Mataram( 2019 )', NULL, NULL, NULL, 27, 'wanita', 'islam', 'Saturday, April 1, 2023', 2045, '45b94bad2ee88951fbf4a0e7e636c695.jpg', 'http://localhost:5000/images/45b94bad2ee88951fbf4a0e7e636c695.jpg', '2023-01-12 09:26:50', '2023-01-12 04:09:24', 'e9a45da9-c277-48f2-b12d-e1ea560660f7', '7f84bdda-a908-4f9e-a976-3ee533fb70fd', '741b3b5a-2cf3-490a-b7d4-7fd8cffb2de8'),
 ('6888715d-29ec-4d05-aa48-55a4f54b0088', '197411212008011008', 'pns', 'MUHAMMAD HAMDI, ST', 'Mataram', '1974-11-21', 'pegawai', 'Pengolah Data\r\n[Fungsional Umum -]\r\n( 30-12-2016 )', NULL, '15 thn,\r\n9 bln', '-', 'Sarjana Teknik Sipil Universitas Mataram ( 2000 )', NULL, NULL, NULL, 47, 'pria', 'islam', 'Monday, April 1, 2024', 2037, 'dc70bf0581cfb089016d3d0e1c60689d.jpg', 'http://localhost:5000/images/dc70bf0581cfb089016d3d0e1c60689d.jpg', '2023-01-12 09:26:50', '2023-01-12 02:18:47', 'e9a45da9-c277-48f2-b12d-e1ea560660f7', '7f84bdda-a908-4f9e-a976-3ee533fb70fd', '741b3b5a-2cf3-490a-b7d4-7fd8cffb2de8'),
 ('68b4cad3-74bf-4dfb-af87-4810b5a552cb', '197812272011012001', 'pns', 'SITI RAMLAH, SE, MM', 'Mataram', '1978-12-27', 'kasubag', 'Kepala Sub Bidang Evaluasi APBD Kabupaten/Kota Wilayah II pada Bidang Bina Dan Evaluasi Keuangan Kabupaten/Kota\n[Struktural Jabatan Pengawas]\n( 06-02-2020 )', 'BEKK - Evaluasi APBD Kab/Kota', '10 thn,\r\n0 bln', 'Pendidikan dan Pelatihan Kepemimpinan Tingkat IV (Diklat PIM Tk. IV)\r\n( Diklat Pim.Tk.IV )\r\n[ Badan Pengembangan Sumber Daya Manusia Daerah ]\r\n( 2018 )', 'Pasca Sarjana Magister Manajemen Universitas Mataram( 2016 )', NULL, NULL, NULL, 43, 'wanita', 'islam', 'Friday, April 1, 2022', 2036, 'da6ade52c7f16e1945bc65a9a3f6fae9.jpg', 'http://localhost:5000/images/da6ade52c7f16e1945bc65a9a3f6fae9.jpg', '2023-01-12 09:26:50', '2023-01-12 04:07:12', 'fe7ea2cc-0cb9-47c2-a88f-8683db745262', '3f98df91-9ec5-45a1-aee8-3a078355a0d8', '741b3b5a-2cf3-490a-b7d4-7fd8cffb2de8'),
@@ -453,7 +453,7 @@ INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `ta
 ('d0afbd74-c006-4240-96df-d1f1a430a025', '199709192018082001', NULL, 'BQ. NURUL AZIZA KAMAL, S.IP', 'Loteng', '1997-09-19', 'pegawai', 'Analis Pemeriksa Anggaran [Fungsional Umum -] ( 01-01-2021 )', NULL, '04 thn, 02 bln', '-', 'S1. Ilmu Pemerintahan - - ( 2018 )', NULL, NULL, NULL, 25, 'wanita', 'islam', '1 Oktober 2026', 2055, 'b69cdb6fd5640592268681f2ecccaa22.jpg', 'http://localhost:5000/images/b69cdb6fd5640592268681f2ecccaa22.jpg', '2023-01-13 02:54:15', '2023-01-13 02:54:15', 'e9a45da9-c277-48f2-b12d-e1ea560660f7', '7f84bdda-a908-4f9e-a976-3ee533fb70fd', 'c639a8a5-9159-4c17-9b59-427865c6b4ed'),
 ('d1f9a0c5-87fd-48ec-ae69-cea82516eab4', '197612312008011032', 'pns', 'KARYANO', 'Kr. Pande', '1976-12-31', 'pegawai', 'Operator Komputer\r\n[Fungsional Umum -]\r\n( 13-04-2017 )', NULL, '19 thn,\r\n0 bln', '-', 'SMA IPS Sman Cakranegara ( 1995 )', NULL, NULL, NULL, 45, 'pria', 'islam', 'Monday, April 1, 2024', 2040, '85c2fdf3c83a0992110ef1e2c94acfd1.jpg', 'http://localhost:5000/images/85c2fdf3c83a0992110ef1e2c94acfd1.jpg', '2023-01-12 09:26:50', '2023-01-12 05:08:47', 'b58eb1f4-55a4-4cae-9709-b50565c2a073', '9fd0fb38-c19d-43f7-8955-b09a95de1506', '454adcee-d791-40dc-adb5-bf4d029e7736'),
 ('d2d9d80c-50d9-43ec-8b9f-dbfca533c043', '198412312009011015', 'pns', 'HANAPI, SE', 'Medana Lotim', '1984-12-31', 'pegawai', 'Peng administrasi [Fungsional Umum -]( 04-09-2015 )', NULL, '11 thn,\r\n6 bln', '-', 'Sarjana Ekonomi Pembangunan UNIZAR( 2017 )', NULL, NULL, NULL, 37, 'pria', 'islam', '1 Oktober 2023', 2039, 'b6a3ab5cb3f4649bcd097d40c65330c2.jpg', 'http://localhost:5000/images/b6a3ab5cb3f4649bcd097d40c65330c2.jpg', '2023-01-12 09:26:50', '2023-01-12 04:23:14', '254f8ec9-5441-4749-acf9-da7b5043875e', '2973e6ce-4b11-4c04-8fc2-9492c5ca44f9', 'f60b5439-5d63-4c1e-8f28-9e4940619244');
-INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `tanggal_lahir`, `nama_jabatan`, `jabatan`, `initial_jabatan`, `masa_kerja_golongan`, `diklat`, `pendidikan`, `no_sk`, `no_rekening`, `nama_rekening`, `umur`, `jenis_kelamin`, `agama`, `kenaikan_pangkat`, `batas_pensiun`, `foto`, `url`, `createdAt`, `updatedAt`, `pangkatUuid`, `golonganUuid`, `bidangUuid`) VALUES
+INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `tanggal_lahir`, `nama_jabatan`, `jabatan`, `initial_jabatan`, `masa_kerja_golongan`, `diklat`, `pendidikan`, `no_sk`, `no_rekening`, `nama_rekening`, `umur`, `jenis_kelamin`, `agama`, `kenaikan_pangkat`, `batas_pensiun`, `foto`, `url`, `createdAt`, `updatedAt`, `pangkat_id`, `golongan_id`, `bidang_id`) VALUES
 ('d4083345-4668-4c06-a6b3-9febb68d2aff', '197001091990032003', 'pns', 'ENDANG WAHYUNINGSIH, S. Adm', 'Semarang', '1970-01-09', 'kasubag', 'Bendahara Pengeluaran Pembantu pada UPTB Balai Pemanfaatan Dan Pengamanan Aset Daerah\r\n[Fungsional Umum -]\r\n( 01-01-2021 )', 'UPTB Aset - Bendahara Pengeluaran', '25 thn,\r\n10 bln', '-', 'Sarjana Ilmu Administrasi Negara Sekolah Tinggi Ilmu Administrasi( 2008 )', NULL, NULL, NULL, 51, 'wanita', 'islam', '-', 2028, 'eadba297872ba40155e69b605595f35d.jpg', 'http://localhost:5000/images/eadba297872ba40155e69b605595f35d.jpg', '2023-01-12 09:26:50', '2023-01-12 03:56:00', 'bb42d0b6-bdd4-428c-b094-4c964f9fb288', '262834f6-d889-4631-8559-c90779bd00b7', '0627251b-0e2f-4609-be16-b8abce89ff6c'),
 ('d49d5f28-13c8-44cc-9af3-e59966894557', '197005252007011035', 'pns', 'SUHERMAN MAHILI, SH', 'Mataram', '1970-05-25', 'pegawai', 'Pengolah Data\r\n[Fungsional Umum -]\r\n( 04-09-2015 )', NULL, '14 thn,\r\n0 bln', '-', 'Sarjana Ilmu Hukum Universitas 45( 2002 )', NULL, NULL, NULL, 51, 'pria', 'islam', 'Tuesday, April 1, 2025', 2042, '852d5249220d16d1964d3cefba44926a.jpg', 'http://localhost:5000/images/852d5249220d16d1964d3cefba44926a.jpg', '2023-01-12 09:26:50', '2023-01-12 05:01:27', 'fe7ea2cc-0cb9-47c2-a88f-8683db745262', '3f98df91-9ec5-45a1-aee8-3a078355a0d8', '79530810-bc72-4bcd-9d45-a9180151abf6'),
 ('D83B170F-5720-E76C-8FDB-FC36F258ED1A', NULL, 'kontrak', 'Windawati, SE', '-', '-', 'pegawai', NULL, NULL, NULL, NULL, NULL, '910/11/BPKAD/2020', '006.22.14431.10-1', 'Bank NTB Syariah', 0, 'wanita', 'islam', NULL, NULL, NULL, NULL, '2023-01-12 13:49:49', '2023-01-12 13:49:49', NULL, NULL, NULL),
@@ -632,11 +632,13 @@ INSERT INTO `sksatker` (`id`, `staff_bagian`, `tgl_surat`, `kd_klasifikasi`, `no
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `smumum`
+-- Struktur dari tabel `surat`
 --
 
-CREATE TABLE `smumum` (
+CREATE TABLE `surat` (
   `id` int(10) UNSIGNED NOT NULL,
+  `jenis_surat` enum('masuk','keluar') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kategori` enum('biasa','sppd','undangan') COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_terima` date NOT NULL,
   `asal_surat` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_surat` date NOT NULL,
@@ -645,66 +647,38 @@ CREATE TABLE `smumum` (
   `perihal` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `diteruskan` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `isi_disposisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status_smumum` enum('proggress','unread','read','') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status_surat` enum('proggress','unread','read') COLLATE utf8mb4_unicode_ci NOT NULL,
   `gambar` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `smumum`
+-- Dumping data untuk tabel `surat`
 --
 
-INSERT INTO `smumum` (`id`, `tgl_terima`, `asal_surat`, `tgl_surat`, `kd_klasifikasi`, `no_surat`, `perihal`, `diteruskan`, `isi_disposisi`, `status_smumum`, `gambar`, `created_at`, `updated_at`) VALUES
-(1, '2017-01-03', 'ISOLV', '2016-12-05', 'PL', 'SPP-CTR/0112016/WW', 'pengenalan Produk', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\"]', 'mohon di cek / dipelajari sesuai kebutuhan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 04:13:25', '2017-08-20 18:16:06'),
-(2, '2017-01-03', 'KADES POTO - SUMBAWA', '2017-01-03', 'SI', '692.1/01/DS-PT/1/2017', 'usulan pengamanan tebing bronjong parapel & pemasangan talud', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\",\"KA.SNVT PELAKSANAAN JARINGAN SUMBER AIR NT I (PJSA)\"]', 'mohon di cek dan diusulkan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 04:16:05', '2017-08-20 18:16:12'),
-(3, '2017-01-03', 'CAMAT PALIBELO', '2017-12-26', 'PR', '610/319/06.F/2016', 'Usulan tambahan marcu', '[\"KASI OPERASI & PEMELIHARAAN (OP)\",\"KA.SNVT PELAKSANAAN JARINGAN PEMANFAATAN AIR NT I (PJPA)\"]', 'mohon untuk diusulkan untuk prioritas', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 04:18:10', '2017-08-20 18:16:18'),
-(4, '2017-01-03', 'KADES BEBER LOTENG', '2017-01-01', 'PR', '-', 'Proposal: Rehab saluran DAM mertak wareng', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\",\"KA.SNVT PELAKSANAAN JARINGAN PEMANFAATAN AIR NT I (PJPA)\"]', 'mohon untuk dicek dan diprog sesuai kewenangan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 04:22:57', '2017-08-20 18:16:00'),
-(5, '2017-01-03', 'KADES BUNUT BAOK', '2017-01-02', 'PR', '-', 'proposal: Rehab normalisasi DAM Tangluk bunut baok', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\",\"KA.SNVT PELAKSANAAN JARINGAN PEMANFAATAN AIR NT I (PJPA)\"]', 'mohon untuk di cek dan di prog. sesuai kewenangan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 04:25:41', '2017-08-20 18:15:50'),
-(6, '2017-01-03', 'KADES SANTONG - KLU', '2016-12-19', 'PR', '021/PAMDES-BB/STG/XII/2016', 'Permohonan bantuan dana', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\"]', 'di cek tolong bisa di programkan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 04:29:21', '2017-08-20 18:15:38'),
-(7, '2017-01-04', 'FAJRI SANTOSO', '2017-01-04', 'KP', '-', 'Permohonan pindah data', '[\"KA.SUBAG TATA USAHA (TU)\"]', 'Bag. Kepegawaian (P. Yamin, P.Udin) tolong proses sesuai prosedur', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 04:41:05', '2017-08-20 18:15:13'),
-(8, '2016-12-27', 'BUPATI SUMBAWA BARAT', '2017-01-04', 'TN', '593/530/ASET', 'Permohonan pinjam pakai tanah', '[\"KA.SUBAG TATA USAHA (TU)\",\"PEJABAT PELAPORAN\"]', 'Bag. BMN tolong di mnitor proses selanjutnya', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 04:43:29', '2017-08-20 18:15:02'),
-(9, '2017-01-04', 'LURAH TANJUNG KARANG', '2016-12-27', 'SI', '104/TJK/XII/2016', 'Bantuan pemasangan & pembukaan bronjong', '[\"KA.SATKER OP SDA (SATKER OP SDA)\",\"KA.SNVT PELAKSANAAN JARINGAN SUMBER AIR NT I (PJSA)\"]', 'mohon bisa di bantu penanganannya', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 04:52:30', '2017-08-20 18:14:57'),
-(10, '2017-01-04', 'PPK BENDUNGAN III', '2016-12-26', 'IK', 'UM.01.03-AS/PB.III/1367/2016', 'Perpanjangan pinjam pakai atas BMN', '[\"KASI PELAKSANAAN (PELAK)\"]', 'mohon dimontor pelaks. kegiatan di lapangan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-20 05:11:15', '2017-08-20 18:14:52');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `smund`
---
-
-CREATE TABLE `smund` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tgl_terima` date NOT NULL,
-  `asal_surat` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_surat` date NOT NULL,
-  `kd_klasifikasi` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_surat` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `perihal` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `diteruskan` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `isi_disposisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status_smund` enum('proggress','unread','read','') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `smund`
---
-
-INSERT INTO `smund` (`id`, `tgl_terima`, `asal_surat`, `tgl_surat`, `kd_klasifikasi`, `no_surat`, `perihal`, `diteruskan`, `isi_disposisi`, `status_smund`, `gambar`, `created_at`, `updated_at`) VALUES
-(2, '2017-01-05', 'INACID', '2017-08-01', 'UM', '-', 'Kongres rapat anggota tahunan & Seminar Nasional INACID - Jambi 10-11 Maret 2017', NULL, NULL, 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:24:13', '2017-08-20 18:13:01'),
-(3, '2017-01-05', 'SEKDA NTB', '2017-01-04', 'UM', '005/006/BPBD-RR/I/2017', 'Und. Raker rencana aksi penanggulangan banjir bandang bima', '[\"KA.SATKER BWS NT I (SATKER BWS)\"]', 'akan dihadiri oleh kepala balai', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:28:01', '2017-08-20 18:14:04'),
-(4, '2017-01-11', 'DIRJEN SDA', '2017-01-10', 'UM', 'UM.02.06-AS/028', 'Rekonsiliasi dan penyusunan laporan keuangan sistem akuntansi instansi dst.', '[\"KA.SNVT PEMBANGUNAN BENDUNGAN NT I (PB NT I)\"]', 'agar dihadiri petugas yang diminta', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:30:59', '2017-08-20 18:14:16'),
-(5, '2017-01-16', 'DPU & PENATAAN RUANG', '2017-01-17', 'UM', '005/334/PUPR-LB/04/2017', 'Sosialisasi hasil penyusunan rencana air minum kab. Lobar', '[\"KA.SNVT PELAKSANAAN JARINGAN SUMBER AIR NT I (PJSA)\"]', 'P. Mahsun (BMN) konsultasikan kallau . Ka Balai apa bisa dilanjutkan', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:33:49', '2017-08-20 18:14:09'),
-(6, '2017-01-17', 'LPJK PROV NTB', '2017-01-18', 'UM', '02/LPJK.NTB/P/I/2017', 'Permohonan pinjam pakai bangunan', '[\"PEJABAT PELAPORAN\"]', 'p. mahsun (BMN): konsultasikan ke ka balai apa bisa di lanjut', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:36:11', '2017-08-20 18:13:56'),
-(7, '2017-01-19', 'DIRJEN SDA', '2017-01-18', 'UM', 'UM.02.06-AB.1/18', 'Sosialisasi eprocedurement dan pembahasan permasalahan pengadaan barang / jasa, dst.', '[\"KASI OPERASI & PEMELIHARAAN (OP)\"]', 'tugaskan orang untuk menghadiir acara tsb', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:40:06', '2017-08-20 18:13:27'),
-(8, '2017-01-17', 'SEKJEN KEMENTRIAN PUPR', '2017-01-19', 'UM', 'UM.02.06-SB/18', 'Peningkatan pemahaman auditor internal di unit hidrologi dan kualitas air', '[\"UNIT LAYANAAN PENGADAAN (ULP)\"]', 'p. erwin rosdianto: berangkat mengahadiri acara tersebut', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:43:55', '2017-08-20 18:13:13'),
-(9, '2017-01-20', 'PUSAT AT AB', '2017-01-19', 'UM', 'UM.02.06-AK/41', 'Undangan penyusunan prog. air baku', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\",\"KA.SNVT PELAKSANAAN JARINGAN PEMANFAATAN AIR NT I (PJPA)\"]', 'mohon untuk hadir pada acara tersebut dan siapkan data - data yang diperlukan', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-20 02:55:59', '2017-08-20 18:13:06'),
-(10, '2017-01-23', 'KOREM 162 / WIRA BHAKTI', '2017-01-23', 'UM', 'B/99/5/2017', 'Undangan UPB US Swapang tahun 2017', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\"]', 'mohon untuk hadir pada acara tsb', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-20 03:00:08', '2017-08-20 18:12:51'),
-(11, '2017-01-23', 'SETDA PROV. NTB', '2017-01-20', 'UM', '005/062/BPBD.NTB/2017', 'Und. Pem. rencana aksi pasca banjir bandang di kota bima', '[\"KA.SUBAG TATA USAHA (TU)\"]', 'mohon untuk di tindak lanjuti dan dihadiri acara tsb', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-20 04:08:12', '2017-08-20 18:12:38'),
-(12, '2017-08-21', 'STMIK Bumigora Mataram', '2017-08-19', 'PD', '100/STMIK/VIII/2017', 'SEMINAR IT 2017', '[\"KA.SUBAG TATA USAHA (TU)\",\"KASI OPERASI & PEMELIHARAAN (OP)\"]', 'mohon di hadiri acara tersebut', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-21 00:32:32', '2017-08-21 00:38:35');
+INSERT INTO `surat` (`id`, `jenis_surat`, `kategori`, `tgl_terima`, `asal_surat`, `tgl_surat`, `kd_klasifikasi`, `no_surat`, `perihal`, `diteruskan`, `isi_disposisi`, `status_surat`, `gambar`, `created_at`, `updated_at`) VALUES
+(2, 'masuk', 'undangan', '2017-01-05', 'INACID', '2017-08-01', 'UM', '-', 'Kongres rapat anggota tahunan & Seminar Nasional INACID - Jambi 10-11 Maret 2017', NULL, NULL, 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:24:13', '2017-08-20 18:13:01'),
+(3, 'masuk', 'undangan', '2017-01-05', 'SEKDA NTB', '2017-01-04', 'UM', '005/006/BPBD-RR/I/2017', 'Und. Raker rencana aksi penanggulangan banjir bandang bima', '[\"KA.SATKER BWS NT I (SATKER BWS)\"]', 'akan dihadiri oleh kepala balai', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:28:01', '2017-08-20 18:14:04'),
+(4, 'masuk', 'undangan', '2017-01-11', 'DIRJEN SDA', '2017-01-10', 'UM', 'UM.02.06-AS/028', 'Rekonsiliasi dan penyusunan laporan keuangan sistem akuntansi instansi dst.', '[\"KA.SNVT PEMBANGUNAN BENDUNGAN NT I (PB NT I)\"]', 'agar dihadiri petugas yang diminta', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:30:59', '2017-08-20 18:14:16'),
+(5, 'masuk', 'undangan', '2017-01-16', 'DPU & PENATAAN RUANG', '2017-01-17', 'UM', '005/334/PUPR-LB/04/2017', 'Sosialisasi hasil penyusunan rencana air minum kab. Lobar', '[\"KA.SNVT PELAKSANAAN JARINGAN SUMBER AIR NT I (PJSA)\"]', 'P. Mahsun (BMN) konsultasikan kallau . Ka Balai apa bisa dilanjutkan', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:33:49', '2017-08-20 18:14:09'),
+(6, 'masuk', 'undangan', '2017-01-17', 'LPJK PROV NTB', '2017-01-18', 'UM', '02/LPJK.NTB/P/I/2017', 'Permohonan pinjam pakai bangunan', '[\"PEJABAT PELAPORAN\"]', 'p. mahsun (BMN): konsultasikan ke ka balai apa bisa di lanjut', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:36:11', '2017-08-20 18:13:56'),
+(7, 'masuk', 'undangan', '2017-01-19', 'DIRJEN SDA', '2017-01-18', 'UM', 'UM.02.06-AB.1/18', 'Sosialisasi eprocedurement dan pembahasan permasalahan pengadaan barang / jasa, dst.', '[\"KASI OPERASI & PEMELIHARAAN (OP)\"]', 'tugaskan orang untuk menghadiir acara tsb', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:40:06', '2017-08-20 18:13:27'),
+(8, 'masuk', 'undangan', '2017-01-17', 'SEKJEN KEMENTRIAN PUPR', '2017-01-19', 'UM', 'UM.02.06-SB/18', 'Peningkatan pemahaman auditor internal di unit hidrologi dan kualitas air', '[\"UNIT LAYANAAN PENGADAAN (ULP)\"]', 'p. erwin rosdianto: berangkat mengahadiri acara tersebut', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-19 07:43:55', '2017-08-20 18:13:13'),
+(9, 'masuk', 'undangan', '2017-01-20', 'PUSAT AT AB', '2017-01-19', 'UM', 'UM.02.06-AK/41', 'Undangan penyusunan prog. air baku', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\",\"KA.SNVT PELAKSANAAN JARINGAN PEMANFAATAN AIR NT I (PJPA)\"]', 'mohon untuk hadir pada acara tersebut dan siapkan data - data yang diperlukan', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-20 02:55:59', '2017-08-20 18:13:06'),
+(10, 'masuk', 'undangan', '2017-01-23', 'KOREM 162 / WIRA BHAKTI', '2017-01-23', 'UM', 'B/99/5/2017', 'Undangan UPB US Swapang tahun 2017', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\"]', 'mohon untuk hadir pada acara tsb', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-20 03:00:08', '2017-08-20 18:12:51'),
+(11, 'masuk', 'undangan', '2017-01-23', 'SETDA PROV. NTB', '2017-01-20', 'UM', '005/062/BPBD.NTB/2017', 'Und. Pem. rencana aksi pasca banjir bandang di kota bima', '[\"KA.SUBAG TATA USAHA (TU)\"]', 'mohon untuk di tindak lanjuti dan dihadiri acara tsb', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-20 04:08:12', '2017-08-20 18:12:38'),
+(12, 'masuk', 'undangan', '2017-08-21', 'STMIK Bumigora Mataram', '2017-08-19', 'PD', '100/STMIK/VIII/2017', 'SEMINAR IT 2017', '[\"KA.SUBAG TATA USAHA (TU)\",\"KASI OPERASI & PEMELIHARAAN (OP)\"]', 'mohon di hadiri acara tersebut', 'read', 'upload/file_suratundangan/SURAT DINAS PU.jpg', '2017-08-21 00:32:32', '2017-08-21 00:38:35'),
+(13, 'masuk', 'biasa', '2017-01-03', 'ISOLV', '2016-12-05', 'PL', 'SPP-CTR/0112016/WW', 'pengenalan Produk', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\"]', 'mohon di cek / dipelajari sesuai kebutuhan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 20:13:25', '2017-08-20 10:16:06'),
+(14, 'masuk', 'biasa', '2017-01-03', 'KADES POTO - SUMBAWA', '2017-01-03', 'SI', '692.1/01/DS-PT/1/2017', 'usulan pengamanan tebing bronjong parapel & pemasangan talud', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\",\"KA.SNVT PELAKSANAAN JARINGAN SUMBER AIR NT I (PJSA)\"]', 'mohon di cek dan diusulkan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 20:16:05', '2017-08-20 10:16:12'),
+(15, 'masuk', 'biasa', '2017-01-03', 'CAMAT PALIBELO', '2017-12-26', 'PR', '610/319/06.F/2016', 'Usulan tambahan marcu', '[\"KASI OPERASI & PEMELIHARAAN (OP)\",\"KA.SNVT PELAKSANAAN JARINGAN PEMANFAATAN AIR NT I (PJPA)\"]', 'mohon untuk diusulkan untuk prioritas', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 20:18:10', '2017-08-20 10:16:18'),
+(16, 'masuk', 'biasa', '2017-01-03', 'KADES BEBER LOTENG', '2017-01-01', 'PR', '-', 'Proposal: Rehab saluran DAM mertak wareng', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\",\"KA.SNVT PELAKSANAAN JARINGAN PEMANFAATAN AIR NT I (PJPA)\"]', 'mohon untuk dicek dan diprog sesuai kewenangan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 20:22:57', '2017-08-20 10:16:00'),
+(17, 'masuk', 'biasa', '2017-01-03', 'KADES BUNUT BAOK', '2017-01-02', 'PR', '-', 'proposal: Rehab normalisasi DAM Tangluk bunut baok', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\",\"KA.SNVT PELAKSANAAN JARINGAN PEMANFAATAN AIR NT I (PJPA)\"]', 'mohon untuk di cek dan di prog. sesuai kewenangan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 20:25:41', '2017-08-20 10:15:50'),
+(18, 'masuk', 'biasa', '2017-01-03', 'KADES SANTONG - KLU', '2016-12-19', 'PR', '021/PAMDES-BB/STG/XII/2016', 'Permohonan bantuan dana', '[\"KASI PROGRAM & PERENCANAAN UMUM (PROG PU)\"]', 'di cek tolong bisa di programkan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 20:29:21', '2017-08-20 10:15:38'),
+(19, 'masuk', 'biasa', '2017-01-04', 'FAJRI SANTOSO', '2017-01-04', 'KP', '-', 'Permohonan pindah data', '[\"KA.SUBAG TATA USAHA (TU)\"]', 'Bag. Kepegawaian (P. Yamin, P.Udin) tolong proses sesuai prosedur', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 20:41:05', '2017-08-20 10:15:13'),
+(20, 'masuk', 'biasa', '2016-12-27', 'BUPATI SUMBAWA BARAT', '2017-01-04', 'TN', '593/530/ASET', 'Permohonan pinjam pakai tanah', '[\"KA.SUBAG TATA USAHA (TU)\",\"PEJABAT PELAPORAN\"]', 'Bag. BMN tolong di mnitor proses selanjutnya', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 20:43:29', '2017-08-20 10:15:02'),
+(21, 'masuk', 'biasa', '2017-01-04', 'LURAH TANJUNG KARANG', '2016-12-27', 'SI', '104/TJK/XII/2016', 'Bantuan pemasangan & pembukaan bronjong', '[\"KA.SATKER OP SDA (SATKER OP SDA)\",\"KA.SNVT PELAKSANAAN JARINGAN SUMBER AIR NT I (PJSA)\"]', 'mohon bisa di bantu penanganannya', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 20:52:30', '2017-08-20 10:14:57'),
+(22, 'masuk', 'biasa', '2017-01-04', 'PPK BENDUNGAN III', '2016-12-26', 'IK', 'UM.01.03-AS/PB.III/1367/2016', 'Perpanjangan pinjam pakai atas BMN', '[\"KASI PELAKSANAAN (PELAK)\"]', 'mohon dimontor pelaks. kegiatan di lapangan', 'read', 'upload/file_suratmasuk/SURAT DINAS PU.jpg', '2017-08-19 21:11:15', '2017-08-20 10:14:52');
 
 -- --------------------------------------------------------
 
@@ -716,7 +690,7 @@ CREATE TABLE `users` (
   `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_lengkap` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `level` enum('admin','pimpinan','agendaris','user') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `divisi_id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bidang_id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -729,15 +703,15 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `nama_lengkap`, `level`, `divisi_id`, `username`, `password`, `foto`, `remember_token`, `created_at`, `updated_at`) VALUES
-('1', 'Denda Afriliani', 'admin', '15', 'agendaris', '$2y$10$FUFoKlBMOJZq7SbvtfJ7Ruegxb8Pv7.d7Hi.Aflm8PcRtzfuZQHDq', 'upload/profile/Denda Afriliani_1410330034.JPG', 'EsAQsgOk9GN208L3ltteW3jAUN2AhVU05HnCsclob7kKzbShpY9he8d5Xuwi', '2017-06-03 05:41:30', '2017-08-16 08:12:06'),
-('10', 'Guntur Febrian', 'admin', '4', 'guntur', '$2y$10$Lj731awkQvHOCVObfXrpFOR635Ci/OrDQABvMjizBwaJ2AllMshRm', 'asset(\'assets/images/profile.png\')', NULL, '2017-08-11 01:25:52', '2017-08-11 01:25:52'),
-('4', 'Administrator', 'admin', '1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'admin', '$2y$10$x5wXUpWci25pfScZbqIdjOu3GAdiZUYK7I9huvLMtiEy/BU67RXkO', 'upload/profile/profile.png', 'kWuxO3YYHmq4TD2629NffoEjVZ9wzhNbU98v1J4ba4VjmvvHDyy10uGJ6Jo8', '2017-06-01 13:13:36', '2017-08-11 00:43:44'),
-('5', 'Ir. Suryo Edi Purnomo', 'admin', '14', 'ketua', '$2y$10$J6/V7gJoyOLLNslxKFFf7.028OKYFq/hSrDYsBQXozkusXLQtMNRi', 'upload/profile/profile.png', 'pgz0bV341esU4FbSOIBloU3zkRdBPti7xbqNSYcgWhc9hWGqePNyZ7wzj7rl', '2017-06-07 20:55:34', '2017-08-11 00:52:17'),
-('6', 'Agus Susanto', 'admin', '1', 'tu', '$2y$10$p6CD/gN4UAoc67MXYqvAD.3elHjiL7y94k.Ec3OT4DcIbBJJOCW.2', 'upload/profile/B612_20161116_150138.jpg', 'ZP1YvT2S0t4f32l5qSK2oyujVv3oklV8gZqWKoJPJQuTMJ34zqHCDM3yHTDq', '2017-06-11 23:22:40', '2017-08-11 00:53:16'),
-('7', 'Linda Lestari', 'admin', '16', 'arsip', '$2y$10$pznWuAoPFzCkXJlKuMebM.lvdL1cqXwSzmZuZybEwkh.01i1tzsMy', 'upload/profile/profile.png', 'vt9oarGGe3YE87nwPrEVVn7hTQXcu4YpFMn0tkFlsjAFnWDRaihwzVt7jCU5', '2017-06-30 20:39:36', '2017-08-11 00:53:50'),
-('8', 'bang mo', 'admin', '11', 'uang', '$2y$10$VJc7kq7qGon2Lyao1wAbPOqmziSl887O.z7h/Qh7tTU1YxjFmL2OW', 'asset(\'assets/images/profile.png\')', 'Xes6Jn3fp2FEKshV4iGzVNOFQpv3WrSDKZy6a2wx8PkTK6MzfQMK0JTHJvNz', '2017-08-11 00:59:08', '2018-04-27 11:20:59'),
-('9', 'Surya Rinjani', 'admin', '2', 'surya', '$2y$10$fiWHHdpCD0lKe.7QGZ2Fc.aBmjBY3gRxHO5yr7ydFh5AbS7/O2A2G', 'asset(\'assets/images/profile.png\')', NULL, '2017-08-11 01:14:03', '2017-08-11 01:14:03');
+INSERT INTO `users` (`id`, `nama_lengkap`, `level`, `bidang_id`, `username`, `password`, `foto`, `remember_token`, `created_at`, `updated_at`) VALUES
+('1', 'Denda Afriliani', 'admin', '1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'agendaris', '$2y$10$FUFoKlBMOJZq7SbvtfJ7Ruegxb8Pv7.d7Hi.Aflm8PcRtzfuZQHDq', 'upload/profile/Denda Afriliani_1410330034.JPG', 'EsAQsgOk9GN208L3ltteW3jAUN2AhVU05HnCsclob7kKzbShpY9he8d5Xuwi', '2017-06-02 21:41:30', '2017-08-16 00:12:06'),
+('10', 'Guntur Febrian', 'admin', '1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'guntur', '$2y$10$Lj731awkQvHOCVObfXrpFOR635Ci/OrDQABvMjizBwaJ2AllMshRm', 'asset(\'assets/images/profile.png\')', NULL, '2017-08-10 17:25:52', '2017-08-10 17:25:52'),
+('4', 'Administrator', 'admin', '1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'admin', '$2y$10$x5wXUpWci25pfScZbqIdjOu3GAdiZUYK7I9huvLMtiEy/BU67RXkO', 'upload/profile/profile.png', 'kWuxO3YYHmq4TD2629NffoEjVZ9wzhNbU98v1J4ba4VjmvvHDyy10uGJ6Jo8', '2017-06-01 05:13:36', '2017-08-10 16:43:44'),
+('5', 'Ir. Suryo Edi Purnomo', 'admin', '1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'ketua', '$2y$10$J6/V7gJoyOLLNslxKFFf7.028OKYFq/hSrDYsBQXozkusXLQtMNRi', 'upload/profile/profile.png', 'pgz0bV341esU4FbSOIBloU3zkRdBPti7xbqNSYcgWhc9hWGqePNyZ7wzj7rl', '2017-06-07 12:55:34', '2017-08-10 16:52:17'),
+('6', 'Agus Susanto', 'admin', '1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'tu', '$2y$10$p6CD/gN4UAoc67MXYqvAD.3elHjiL7y94k.Ec3OT4DcIbBJJOCW.2', 'upload/profile/B612_20161116_150138.jpg', 'ZP1YvT2S0t4f32l5qSK2oyujVv3oklV8gZqWKoJPJQuTMJ34zqHCDM3yHTDq', '2017-06-11 15:22:40', '2017-08-10 16:53:16'),
+('7', 'Linda Lestari', 'admin', '1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'arsip', '$2y$10$pznWuAoPFzCkXJlKuMebM.lvdL1cqXwSzmZuZybEwkh.01i1tzsMy', 'upload/profile/profile.png', 'vt9oarGGe3YE87nwPrEVVn7hTQXcu4YpFMn0tkFlsjAFnWDRaihwzVt7jCU5', '2017-06-30 12:39:36', '2017-08-10 16:53:50'),
+('8', 'bang mo', 'admin', '1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'uang', '$2y$10$VJc7kq7qGon2Lyao1wAbPOqmziSl887O.z7h/Qh7tTU1YxjFmL2OW', 'asset(\'assets/images/profile.png\')', 'Xes6Jn3fp2FEKshV4iGzVNOFQpv3WrSDKZy6a2wx8PkTK6MzfQMK0JTHJvNz', '2017-08-10 16:59:08', '2018-04-27 03:20:59'),
+('9', 'Surya Rinjani', 'admin', '1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'surya', '$2y$10$fiWHHdpCD0lKe.7QGZ2Fc.aBmjBY3gRxHO5yr7ydFh5AbS7/O2A2G', 'asset(\'assets/images/profile.png\')', NULL, '2017-08-10 17:14:03', '2017-08-10 17:14:03');
 
 --
 -- Indexes for dumped tables
@@ -768,7 +742,7 @@ ALTER TABLE `file_surat_keluar`
 -- Indeks untuk tabel `golongan`
 --
 ALTER TABLE `golongan`
-  ADD PRIMARY KEY (`uuid`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `migrations`
@@ -780,7 +754,16 @@ ALTER TABLE `migrations`
 -- Indeks untuk tabel `pangkat`
 --
 ALTER TABLE `pangkat`
-  ADD PRIMARY KEY (`uuid`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bidang_id` (`bidang_id`),
+  ADD KEY `golongan_id` (`golongan_id`),
+  ADD KEY `pangkat_id` (`pangkat_id`);
 
 --
 -- Indeks untuk tabel `skbws`
@@ -818,15 +801,9 @@ ALTER TABLE `sksatker`
   ADD KEY `tbl_sksatker_filesk_id_foreign` (`filesk_id`);
 
 --
--- Indeks untuk tabel `smumum`
+-- Indeks untuk tabel `surat`
 --
-ALTER TABLE `smumum`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `smund`
---
-ALTER TABLE `smund`
+ALTER TABLE `surat`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -834,18 +811,13 @@ ALTER TABLE `smund`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `divisi_id` (`divisi_id`),
-  ADD KEY `divisi_id_2` (`divisi_id`);
+  ADD KEY `divisi_id` (`bidang_id`),
+  ADD KEY `divisi_id_2` (`bidang_id`),
+  ADD KEY `divisi_id_3` (`bidang_id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
-
---
--- AUTO_INCREMENT untuk tabel `distribusi`
---
-ALTER TABLE `distribusi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `file_surat_keluar`
@@ -890,16 +862,10 @@ ALTER TABLE `sksatker`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `smumum`
+-- AUTO_INCREMENT untuk tabel `surat`
 --
-ALTER TABLE `smumum`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT untuk tabel `smund`
---
-ALTER TABLE `smund`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `surat`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -910,8 +876,16 @@ ALTER TABLE `smund`
 --
 ALTER TABLE `distribusi`
   ADD CONSTRAINT `smumum_id` FOREIGN KEY (`smumum_id`) REFERENCES `smumum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `smund_id` FOREIGN KEY (`smund_id`) REFERENCES `smund` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `smund_id` FOREIGN KEY (`smund_id`) REFERENCES `surat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tujuan` FOREIGN KEY (`tujuan`) REFERENCES `divisi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`bidang_id`) REFERENCES `bidang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pegawai_ibfk_2` FOREIGN KEY (`golongan_id`) REFERENCES `golongan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pegawai_ibfk_3` FOREIGN KEY (`pangkat_id`) REFERENCES `pangkat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `skbws`
@@ -942,6 +916,12 @@ ALTER TABLE `skppkttl`
 --
 ALTER TABLE `sksatker`
   ADD CONSTRAINT `tbl_sksatker_filesk_id_foreign` FOREIGN KEY (`filesk_id`) REFERENCES `file_surat_keluar` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`bidang_id`) REFERENCES `bidang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

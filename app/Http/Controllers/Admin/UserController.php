@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::orderBy('created_at', 'DESC')->get();
+        $users = User::orderBy('created_at', 'DESC')->get();
 
-        return view('Admin.pengguna.pengguna', compact('user'));
+        return view('Admin.pengguna.pengguna', compact('users'));
     }
 
     /**
@@ -23,7 +24,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $pegawai = Pegawai::get();
+
+        return view('Admin.pengguna.components.add', compact('pegawai'));
     }
 
     /**

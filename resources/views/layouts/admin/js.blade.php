@@ -38,3 +38,9 @@
 
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('build/js/custom.min.js') }}"></script>
+@yield('additional-js')
+<script>
+     $(function() {
+         $("[data-bs-tooltip='tooltip']").tooltip();
+     });
+</script>
