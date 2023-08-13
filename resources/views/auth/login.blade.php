@@ -38,7 +38,7 @@
                 </button>
               </div>
             @endif
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('act-login') }}">
                 @csrf
               <h1>Login Form</h1>
               <div>

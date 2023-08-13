@@ -33,8 +33,12 @@ class RouteServiceProvider extends ServiceProvider
         // routes admin
         $this->AdminUser();
         $this->AdminBidang();
+
+        // routes user
+        $this->UserSurat();
     }
 
+    // admin map
     public function AdminUser()
     {
         Route::middleware('web')
@@ -47,6 +51,14 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/admin/bidang.php'));
+    }
+
+    // user map
+    public function UserSurat()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/user/surat.php'));
     }
 
     public function mapWebRoutes()
