@@ -17,4 +17,14 @@ class Surat extends Model
     {
         return $this->hasOne(FileSurat::class);
     }
+
+    public function Bidang()
+    {
+        return $this->belongsTo(Bidang::class);
+    }
+
+    public function Distribusi()
+    {
+        return $this->hasMany(Distribusi::class);
+    }
 }

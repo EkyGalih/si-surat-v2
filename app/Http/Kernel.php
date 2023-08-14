@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
 
         'admin' => \App\Http\Middleware\isAdmin::class,
         'user' => \App\Http\Middleware\isUser::class,
+        'agendaris' => \App\Http\Middleware\isAgendaris::class,
     ];
 }

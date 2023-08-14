@@ -1,14 +1,12 @@
 @if ($message = Session::get('success'))
     <script>
         swal({
+            position: 'top',
             title: 'Berhasil!',
             text: '{{$message}}',
             icon: "success",
-            buttons : {
-                confirm : {
-                    className: 'btn btn-success'
-                }
-            }
+            timer: 1500,
+            buttons: false
         });
     </script>
 @endif
@@ -19,11 +17,8 @@
             title: 'Informasi!',
             text: '{{$message}}',
             icon: "info",
-            buttons : {
-                confirm : {
-                    className: 'btn btn-success'
-                }
-            }
+            timer: 1500,
+            buttons :false
         });
     </script>
 @endif
@@ -34,11 +29,8 @@
             title: 'Opps!',
             text: '{{$message}}',
             icon: "warning",
-            buttons : {
-                confirm : {
-                    className: 'btn btn-success'
-                }
-            }
+            timer: 1500,
+            buttons :false
         });
     </script>
 @endif
@@ -49,11 +41,8 @@
             title: 'Terjadi Kesalahan!',
             text: '{{$message}}',
             icon: "error",
-            buttons : {
-                confirm : {
-                    className: 'btn btn-success'
-                }
-            }
+            timer: 1500,
+            buttons : false
         });
     </script>
 @endif

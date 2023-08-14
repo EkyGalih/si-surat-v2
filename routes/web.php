@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BerandaController;
+use App\Http\Controllers\Agendaris\BerandaController as AgendarisBerandaController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\BerandaController as UserBerandaController;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +27,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'user']], function () {
     Route::get('/', [UserBerandaController::class, 'index'])->name('user-beranda');
+});
+
+Route::group(['prefix' => 'agendaris', 'middleware' => ['auth', 'agendaris']], function() {
+    Route::get('/', [AgendarisBerandaController::class, 'index'])->name('agendaris-beranda');
 });

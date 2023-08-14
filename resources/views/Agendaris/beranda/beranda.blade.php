@@ -1,6 +1,7 @@
-@extends('User.index')
-@section('title', 'Halaman User')
+@extends('Agendaris.index')
+@section('title', 'Agendaris')
 @section('content')
+<div class="right_col" role="main">
     <div class="row">
         <div class="col-md-12 col-sm-12 ">
             <div class="dashboard_graph">
@@ -673,4 +674,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

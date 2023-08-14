@@ -13,7 +13,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('user-distribusi.index') }}">
                 <i class="fa fa-share"></i> Distribusi
             </a>
         </li>
