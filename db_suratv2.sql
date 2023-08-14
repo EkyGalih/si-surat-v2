@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 14, 2023 at 11:08 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Waktu pembuatan: 14 Agu 2023 pada 23.02
+-- Versi server: 5.7.33
+-- Versi PHP: 8.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,24 +18,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bpkad_surat`
+-- Database: `db_suratv2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bidang`
+-- Struktur dari tabel `bidang`
 --
 
 CREATE TABLE `bidang` (
-  `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_bidang` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_bidang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `bidang`
+-- Dumping data untuk tabel `bidang`
 --
 
 INSERT INTO `bidang` (`id`, `nama_bidang`, `created_at`, `updated_at`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `bidang` (`id`, `nama_bidang`, `created_at`, `updated_at`) VALUES
 ('1f30e9ae-9f1a-4026-86d7-9384ae70241b', 'TU - (SEKERTARIAT)', '2023-01-06 01:53:28', '2023-01-12 05:17:59'),
 ('348e3315-b868-4eb1-8c1e-7f6d24857cca', 'PAMDAL', '2023-01-12 08:25:26', '2023-01-12 08:25:35'),
 ('454adcee-d791-40dc-adb5-bf4d029e7736', 'UPTB Perbendaharaan', '2023-01-06 01:53:46', '2023-01-06 01:58:03'),
-('4805423b-8d94-4c42-ac73-2b71dbe7c843', 'Akuntansi', '2023-01-06 01:53:39', '2023-01-06 01:53:39'),
+('4805423b-8d94-4c42-ac73-2b71dbe7c843', 'Akuntansi', '2023-01-06 01:53:39', '2023-08-15 00:27:06'),
 ('5f187f13-c645-4ccd-b027-ac85e56e9f54', 'Arsip', '2023-01-06 01:53:48', '2023-01-06 01:53:48'),
 ('741b3b5a-2cf3-490a-b7d4-7fd8cffb2de8', 'BEKK', '2023-01-06 01:53:33', '2023-01-06 01:53:33'),
 ('79530810-bc72-4bcd-9d45-a9180151abf6', 'BMD', '2023-01-06 01:53:36', '2023-01-06 01:53:36'),
@@ -56,83 +56,57 @@ INSERT INTO `bidang` (`id`, `nama_bidang`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `distribusi`
+-- Struktur dari tabel `distribusi`
 --
 
 CREATE TABLE `distribusi` (
-  `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tujuan` int UNSIGNED NOT NULL,
-  `smund_id` int UNSIGNED DEFAULT NULL,
-  `smumum_id` int UNSIGNED DEFAULT NULL,
-  `status_baca` enum('unread','read','') NOT NULL DEFAULT 'unread',
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bidang_id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surat_id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_baca` enum('unread','read','') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unread',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `distribusi`
---
-
-INSERT INTO `distribusi` (`id`, `tujuan`, `smund_id`, `smumum_id`, `status_baca`, `created_at`, `updated_at`) VALUES
-('1', 3, NULL, 10, 'unread', '2017-08-20 06:54:06', '2017-08-20 06:54:06'),
-('10', 8, 9, NULL, 'unread', '2017-08-20 18:11:12', '2017-08-20 18:11:12'),
-('11', 2, 10, NULL, 'unread', '2017-08-20 18:11:43', '2017-08-20 18:11:43'),
-('12', 1, 11, NULL, 'read', '2017-08-20 18:12:09', '2017-08-20 18:53:55'),
-('13', 2, NULL, 1, 'unread', '2017-08-20 18:18:47', '2017-08-20 18:18:47'),
-('14', 2, NULL, 2, 'unread', '2017-08-20 18:20:33', '2017-08-20 18:20:33'),
-('15', 7, NULL, 2, 'unread', '2017-08-20 18:20:33', '2017-08-20 18:20:33'),
-('16', 4, NULL, 3, 'unread', '2017-08-20 18:21:18', '2017-08-20 18:21:18'),
-('17', 8, NULL, 3, 'unread', '2017-08-20 18:21:19', '2017-08-20 18:21:19'),
-('18', 2, NULL, 4, 'unread', '2017-08-20 18:21:58', '2017-08-20 18:21:58'),
-('19', 8, NULL, 4, 'unread', '2017-08-20 18:21:58', '2017-08-20 18:21:58'),
-('2', 2, 2, NULL, 'unread', '2017-08-20 18:06:25', '2017-08-20 18:06:25'),
-('20', 2, NULL, 5, 'unread', '2017-08-20 18:23:01', '2017-08-20 18:23:01'),
-('21', 8, NULL, 5, 'unread', '2017-08-20 18:23:01', '2017-08-20 18:23:01'),
-('22', 2, NULL, 6, 'unread', '2017-08-20 18:23:27', '2017-08-20 18:23:27'),
-('23', 1, NULL, 7, 'read', '2017-08-20 18:23:57', '2017-08-20 18:27:51'),
-('24', 12, NULL, 8, 'unread', '2017-08-20 18:24:35', '2017-08-20 18:24:35'),
-('25', 6, NULL, 9, 'unread', '2017-08-20 18:25:08', '2017-08-20 18:25:08'),
-('26', 7, NULL, 9, 'unread', '2017-08-20 18:25:08', '2017-08-20 18:25:08'),
-('27', 1, 12, NULL, 'unread', '2017-08-21 00:38:06', '2017-08-21 00:38:06'),
-('28', 4, 12, NULL, 'unread', '2017-08-21 00:38:07', '2017-08-21 00:38:07'),
-('3', 5, 3, NULL, 'unread', '2017-08-20 18:07:20', '2017-08-20 18:07:20'),
-('4', 9, 4, NULL, 'unread', '2017-08-20 18:08:04', '2017-08-20 18:08:04'),
-('5', 7, 5, NULL, 'unread', '2017-08-20 18:09:22', '2017-08-20 18:09:22'),
-('6', 12, 6, NULL, 'unread', '2017-08-20 18:09:50', '2017-08-20 18:09:50'),
-('7', 4, 7, NULL, 'unread', '2017-08-20 18:10:19', '2017-08-20 18:10:19'),
-('8', 13, 8, NULL, 'unread', '2017-08-20 18:10:38', '2017-08-20 18:10:38'),
-('9', 4, 9, NULL, 'unread', '2017-08-20 18:11:12', '2017-08-20 18:11:12');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `file_surat`
+-- Struktur dari tabel `file_surat`
 --
 
 CREATE TABLE `file_surat` (
   `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path_file` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lampiran` text COLLATE utf8mb4_unicode_ci,
+  `path_lampiran` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `surat_id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `file_surat`
+--
+
+INSERT INTO `file_surat` (`id`, `file`, `path_file`, `lampiran`, `path_lampiran`, `surat_id`, `created_at`, `updated_at`) VALUES
+('30d343da-1237-48e0-b7f8-6ba9dc8afdce', 'out-Program - (SEKERTARIAT)-6e3647d9d5e236e2b1f9f7cbd55cc331.jpeg', 'upload/file_surat/keluar/', 'lampiran/lamp-out-Program - (SEKERTARIAT)-bc40a016fc053f8220348f72bd0fdfcb.jpeg', 'upload/file_surat/keluar/', 'a8061f63-70f9-41d2-8f67-92335b80335c', '2023-08-14 12:53:10', '2023-08-14 12:54:41');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `golongan`
+-- Struktur dari tabel `golongan`
 --
 
 CREATE TABLE `golongan` (
-  `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_golongan` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_golongan` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `golongan`
+-- Dumping data untuk tabel `golongan`
 --
 
 INSERT INTO `golongan` (`id`, `nama_golongan`, `created_at`, `updated_at`) VALUES
@@ -156,17 +130,17 @@ INSERT INTO `golongan` (`id`, `nama_golongan`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
-  `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -188,18 +162,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pangkat`
+-- Struktur dari tabel `pangkat`
 --
 
 CREATE TABLE `pangkat` (
-  `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_pangkat` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_pangkat` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `pangkat`
+-- Dumping data untuk tabel `pangkat`
 --
 
 INSERT INTO `pangkat` (`id`, `nama_pangkat`, `created_at`, `updated_at`) VALUES
@@ -224,41 +198,41 @@ INSERT INTO `pangkat` (`id`, `nama_pangkat`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pegawai`
+-- Struktur dari tabel `pegawai`
 --
 
 CREATE TABLE `pegawai` (
-  `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nip` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jenis_pegawai` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tempat_lahir` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tanggal_lahir` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_jabatan` enum('pegawai','kaban','kabag','kasubag','sekban') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pegawai',
-  `jabatan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `initial_jabatan` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `masa_kerja_golongan` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `diklat` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `pendidikan` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `no_sk` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `no_rekening` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nama_rekening` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `umur` int NOT NULL,
-  `jenis_kelamin` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `agama` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kenaikan_pangkat` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `batas_pensiun` int DEFAULT NULL,
-  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nip` varchar(18) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jenis_pegawai` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tempat_lahir` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal_lahir` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_jabatan` enum('pegawai','kaban','kabag','kasubag','sekban') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pegawai',
+  `jabatan` text COLLATE utf8mb4_unicode_ci,
+  `initial_jabatan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `masa_kerja_golongan` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `diklat` text COLLATE utf8mb4_unicode_ci,
+  `pendidikan` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_sk` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_rekening` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_rekening` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `umur` int(11) NOT NULL,
+  `jenis_kelamin` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agama` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kenaikan_pangkat` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `batas_pensiun` int(11) DEFAULT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
-  `pangkat_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `golongan_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `bidang_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `pangkat_id` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `golongan_id` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bidang_id` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `pegawai`
+-- Dumping data untuk tabel `pegawai`
 --
 
 INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `tanggal_lahir`, `nama_jabatan`, `jabatan`, `initial_jabatan`, `masa_kerja_golongan`, `diklat`, `pendidikan`, `no_sk`, `no_rekening`, `nama_rekening`, `umur`, `jenis_kelamin`, `agama`, `kenaikan_pangkat`, `batas_pensiun`, `foto`, `url`, `createdAt`, `updatedAt`, `pangkat_id`, `golongan_id`, `bidang_id`) VALUES
@@ -466,197 +440,65 @@ INSERT INTO `pegawai` (`id`, `nip`, `jenis_pegawai`, `name`, `tempat_lahir`, `ta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skbws`
---
-
-CREATE TABLE `skbws` (
-  `id` int UNSIGNED NOT NULL,
-  `staff_bagian` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_surat` date NOT NULL,
-  `kd_klasifikasi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_surat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `perihal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `filesk_id` int UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `skbws`
---
-
-INSERT INTO `skbws` (`id`, `staff_bagian`, `tgl_surat`, `kd_klasifikasi`, `no_surat`, `perihal`, `filesk_id`, `created_at`, `updated_at`) VALUES
-(1, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'KU', '2/UM.02.07/BWS NT I/002/2017', '2', 2, '2017-08-20 19:01:06', '2017-08-20 19:01:06'),
-(2, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'KP', '3/003/KPTS/BWS-NT I/2017', '3', 3, '2017-08-20 19:15:06', '2017-08-20 19:15:06'),
-(3, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'KP', '4/KP.03.02/BWS NT I/2017', '4', 4, '2017-08-20 19:22:49', '2017-08-20 19:22:49'),
-(4, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'KP', '5/SC/BWS NT /2017', '5', 5, '2017-08-20 21:01:11', '2017-08-20 21:01:11'),
-(5, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'PD', '6/PD.02.04-AS/BWS NT I/2017', '6', 6, '2017-08-20 21:05:08', '2017-08-20 21:05:08'),
-(6, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'KP', '7/KP.03.04-AS/BWS-NT I/007/2017', '7', 7, '2017-08-20 21:11:55', '2017-08-20 21:11:55'),
-(7, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'KP', '10/KPTS/BWS NT I/2017', '10', 10, '2017-08-20 21:13:46', '2017-08-20 21:13:46'),
-(8, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'IK', '11/IK.02.04-AS/SPK-TL/Sat.BWS-NTI/2017', '11', 11, '2017-08-20 21:15:52', '2017-08-20 21:15:52'),
-(9, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'UM', '12/UM.02.06-AS/BWS NT I/2017', '12', 12, '2017-08-20 21:18:00', '2017-08-20 21:18:00'),
-(10, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'UM', '13/UM.02.06.AS/2017', '13', 13, '2017-08-20 21:19:17', '2017-08-20 21:19:17'),
-(11, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'PR', '14/PR.01.04-AS/BWS NT I/2017', '14', 14, '2017-08-20 21:28:22', '2017-08-20 21:28:22'),
-(12, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'KP', '15/KPTS/Sat. BWS NT I/2017', '15', 15, '2017-08-20 21:30:06', '2017-08-20 21:30:06'),
-(13, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'PW', '16/PW.01.02-AS/BWS NT I/2017', '16', 16, '2017-08-20 21:33:06', '2017-08-20 21:33:52'),
-(14, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'HK', '17/HK.01.04/VI/17', '17', 17, '2017-08-20 23:33:47', '2017-08-20 23:33:47');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `skppd`
---
-
-CREATE TABLE `skppd` (
-  `id` int UNSIGNED NOT NULL,
-  `staff_bagian` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_surat` date NOT NULL,
-  `kd_klasifikasi` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_surat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `perihal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `filesk_id` int UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `skppd`
---
-
-INSERT INTO `skppd` (`id`, `staff_bagian`, `tgl_surat`, `kd_klasifikasi`, `no_surat`, `perihal`, `filesk_id`, `created_at`, `updated_at`) VALUES
-(1, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'PD', '21/PD.01.04/VIII/17', '21', 21, '2017-08-20 23:47:04', '2017-08-20 23:47:04');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `skppdttl`
---
-
-CREATE TABLE `skppdttl` (
-  `id` int UNSIGNED NOT NULL,
-  `staff_bagian` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_surat` date NOT NULL,
-  `kd_klasifikasi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_surat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `perihal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `filesk_id` int UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `skppdttl`
---
-
-INSERT INTO `skppdttl` (`id`, `staff_bagian`, `tgl_surat`, `kd_klasifikasi`, `no_surat`, `perihal`, `filesk_id`, `created_at`, `updated_at`) VALUES
-(1, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'UM', '22/UM.02.04/VIII/17', '22', 22, '2017-08-20 23:48:56', '2017-08-20 23:48:56');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `skppkttl`
---
-
-CREATE TABLE `skppkttl` (
-  `id` int UNSIGNED NOT NULL,
-  `staff_bagian` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_surat` date NOT NULL,
-  `kd_klasifikasi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_surat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `perihal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `filesk_id` int UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `skppkttl`
---
-
-INSERT INTO `skppkttl` (`id`, `staff_bagian`, `tgl_surat`, `kd_klasifikasi`, `no_surat`, `perihal`, `filesk_id`, `created_at`, `updated_at`) VALUES
-(1, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'UM', '18/UM.12.04/VIII/17', '18', 18, '2017-08-20 23:50:09', '2017-08-20 23:50:09');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sksatker`
---
-
-CREATE TABLE `sksatker` (
-  `id` int UNSIGNED NOT NULL,
-  `staff_bagian` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_surat` date NOT NULL,
-  `kd_klasifikasi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_surat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `perihal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `filesk_id` int UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `sksatker`
---
-
-INSERT INTO `sksatker` (`id`, `staff_bagian`, `tgl_surat`, `kd_klasifikasi`, `no_surat`, `perihal`, `filesk_id`, `created_at`, `updated_at`) VALUES
-(1, 'KA.SUBAG TATA USAHA (TU)', '2017-08-21', 'PD', '20/PD.24.14/VIII/17', '20', 20, '2017-08-20 23:51:52', '2017-08-20 23:51:52');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `surat`
+-- Struktur dari tabel `surat`
 --
 
 CREATE TABLE `surat` (
   `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_surat` enum('masuk','keluar') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kategori` enum('biasa','sppd','undangan') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_terima` date NOT NULL,
-  `asal_surat` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_surat` enum('masuk','keluar') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kategori` enum('biasa','sppd','undangan') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl_terima` date DEFAULT NULL,
+  `asal_surat` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_surat` date NOT NULL,
-  `kd_klasifikasi` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_surat` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `perihal` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `diteruskan` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `isi_disposisi` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status_surat` enum('proggress','unread','read') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_surat` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `perihal` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `diteruskan` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `isi_disposisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status_surat` enum('proggress','unread','read','done') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bidang_id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `surat`
+--
+
+INSERT INTO `surat` (`id`, `jenis_surat`, `kategori`, `tgl_terima`, `asal_surat`, `tgl_surat`, `no_surat`, `perihal`, `diteruskan`, `isi_disposisi`, `status_surat`, `bidang_id`, `created_at`, `updated_at`) VALUES
+('a8061f63-70f9-41d2-8f67-92335b80335c', 'keluar', 'biasa', NULL, 'Program - (SEKERTARIAT)', '2023-08-15', NULL, 'permohonan pendanaan di bidang', NULL, NULL, 'proggress', '988226b4-0cd4-4547-a218-25dd9c436520', '2023-08-14 12:53:10', '2023-08-14 12:53:10');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
-  `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_lengkap` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `level` enum('admin','pimpinan','agendaris','user') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pegawai_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_lengkap` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `level` enum('admin','pimpinan','agendaris','user') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pegawai_id` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `nama_lengkap`, `level`, `pegawai_id`, `username`, `password`, `foto`, `remember_token`, `created_at`, `updated_at`) VALUES
 ('1', 'ROESITA, S. IP', 'agendaris', '5037e6fb-affc-454b-aad6-304867cd028f', '196601211985032004', '$2y$10$FUFoKlBMOJZq7SbvtfJ7Ruegxb8Pv7.d7Hi.Aflm8PcRtzfuZQHDq', '/images/pegawai/16a85f71c8afe707fafa79cdab8899e8.jpg', 'EsAQsgOk9GN208L3ltteW3jAUN2AhVU05HnCsclob7kKzbShpY9he8d5Xuwi', '2017-06-02 13:41:30', '2023-08-11 06:28:59'),
-('10', 'SURMAYANTI ISNAENI, S.IP', 'user', '401dffdd-fcc8-455e-aa26-a9b397f35629', '199201122014062001', '$2y$10$Lj731awkQvHOCVObfXrpFOR635Ci/OrDQABvMjizBwaJ2AllMshRm', '/images/pegawai/1beddb8ce8117060a488e6868381b98b.jpg', NULL, '2017-08-10 09:25:52', '2023-08-11 06:26:44'),
-('4', 'Eky Galih Gunanda, S.Kom', 'admin', '65123669-FB80-E79A-FD87-EB4A4AD41F90', 'admin', '$2y$10$x5wXUpWci25pfScZbqIdjOu3GAdiZUYK7I9huvLMtiEy/BU67RXkO', '/images/pegawai/c3459a1517b2aadeb70b4b17d94c4acc.jpg', 'll1Kt9ywvW9EmZco6ejcNVvMG0NcucsMSRHhspVqaXBgp22NqMI6hLwHzKte', '2017-05-31 21:13:36', '2023-08-11 13:37:40'),
+('379ba070-a8b7-4627-b457-ca77d1fb6699', 'BASRI, S. Adm', 'agendaris', '71707d07-099c-4c31-997c-e56580bbe16d', '198012312008011022', '$2y$10$J37mHP.jde63SoDDnOkSTOEuXEDo9UzTw62CaXVODelGIs3Cti/si', '/images/pegawai/a0d5b8d4d63fbe3ce770f6231e334da0.jpg', NULL, '2023-08-14 13:35:22', '2023-08-14 13:35:22'),
+('4', 'Eky Galih Gunanda, S.Kom', 'admin', '65123669-FB80-E79A-FD87-EB4A4AD41F90', 'admin', '$2y$10$x5wXUpWci25pfScZbqIdjOu3GAdiZUYK7I9huvLMtiEy/BU67RXkO', '/images/pegawai/c3459a1517b2aadeb70b4b17d94c4acc.jpg', 'gfcyOpI0xmIG8PBcGflFQfAWCeavqGQWDpNv2WnpPooyV90aMP0HmUmG3CxL', '2017-05-31 21:13:36', '2023-08-11 13:37:40'),
 ('5', 'Drs. SAMSUL RIZAL, MM', 'pimpinan', '0a40a5d8-771d-43aa-8a11-275ceef3861c', '196408021991031007', '$2y$10$J6/V7gJoyOLLNslxKFFf7.028OKYFq/hSrDYsBQXozkusXLQtMNRi', '/images/pegawai/dc5a95203c617225e505a96a2f2f8c0d.jpg', 'pgz0bV341esU4FbSOIBloU3zkRdBPti7xbqNSYcgWhc9hWGqePNyZ7wzj7rl', '2017-06-07 04:55:34', '2023-08-11 06:24:53'),
-('6', 'BASRI, S. Adm', 'agendaris', '71707d07-099c-4c31-997c-e56580bbe16d', '198012312008011022', '$2y$10$p6CD/gN4UAoc67MXYqvAD.3elHjiL7y94k.Ec3OT4DcIbBJJOCW.2', '/images/pegawai/a0d5b8d4d63fbe3ce770f6231e334da0.jpg', 'ZP1YvT2S0t4f32l5qSK2oyujVv3oklV8gZqWKoJPJQuTMJ34zqHCDM3yHTDq', '2017-06-11 07:22:40', '2023-08-11 06:26:19'),
 ('7', 'Baiq Heny Adiwinarni, A.Md', 'user', '1CADBB99-6F78-F5AE-5626-8028B7DF6D77', '12345678', '$2y$10$pznWuAoPFzCkXJlKuMebM.lvdL1cqXwSzmZuZybEwkh.01i1tzsMy', '/images/pegawai/e495e6f04fc5b39f8dffa2af6205d305.jpg', 'vt9oarGGe3YE87nwPrEVVn7hTQXcu4YpFMn0tkFlsjAFnWDRaihwzVt7jCU5', '2017-06-30 04:39:36', '2023-08-11 06:26:03'),
 ('8', 'MUHAMMAD FATONI, S.Sos', 'user', 'bab0dc74-8a95-4da6-8712-7b9dd3b9ae5b', '198103202005011011', '$2y$10$VJc7kq7qGon2Lyao1wAbPOqmziSl887O.z7h/Qh7tTU1YxjFmL2OW', '/images/pegawai/dd8f3f1eeed5b2b9b7d0b6f0ea331231.jpg', 'Xes6Jn3fp2FEKshV4iGzVNOFQpv3WrSDKZy6a2wx8PkTK6MzfQMK0JTHJvNz', '2017-08-10 08:59:08', '2023-08-11 06:25:31'),
 ('9', 'NI MADE SUARTINI, SE', 'user', '162be1f3-994f-4b8c-a9bd-d11b50df27fe', '197510062007012020', '$2y$10$fiWHHdpCD0lKe.7QGZ2Fc.aBmjBY3gRxHO5yr7ydFh5AbS7/O2A2G', '/images/pegawai/fcf4af70e26bf4de73e23ae180271467.jpg', NULL, '2017-08-10 09:14:03', '2023-08-11 06:27:32'),
+('bb373898-f575-445d-aa88-decb03e77575', 'SURMAYANTI ISNAENI, S.IP', 'user', '401dffdd-fcc8-455e-aa26-a9b397f35629', '199201122014062001', '$2y$10$U7QVuwhWIdhti.YR4u8Eb.V6L75hoUCOH42ia2b.MRohQM6JA2QV2', '/images/pegawai/1beddb8ce8117060a488e6868381b98b.jpg', NULL, '2023-08-14 13:00:12', '2023-08-14 13:00:12'),
 ('de2e473c-56ad-4b04-95a9-b85b8b293fd7', 'YUL HADIANSYAH, SE, MM', 'user', '984e03c1-a5b5-468d-8d52-7aa3a1c23ee2', '198103152006041013', '$2y$10$bfLCIBnEvKrF/vn3SzZNb.MR6oihUGY.Z4ATQXs022oikFK9COIRm', '/images/pegawai/845bda781462599e9e403b5a3caa6fca.jpg', NULL, '2023-08-11 14:51:22', '2023-08-11 14:51:22');
 
 --
@@ -664,47 +506,47 @@ INSERT INTO `users` (`id`, `nama_lengkap`, `level`, `pegawai_id`, `username`, `p
 --
 
 --
--- Indexes for table `bidang`
+-- Indeks untuk tabel `bidang`
 --
 ALTER TABLE `bidang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `distribusi`
+-- Indeks untuk tabel `distribusi`
 --
 ALTER TABLE `distribusi`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `smund_id` (`smund_id`),
-  ADD KEY `smumum_id` (`smumum_id`),
-  ADD KEY `tujuan` (`tujuan`);
+  ADD KEY `smund_id` (`surat_id`),
+  ADD KEY `tujuan` (`bidang_id`),
+  ADD KEY `bidang_id` (`bidang_id`);
 
 --
--- Indexes for table `file_surat`
+-- Indeks untuk tabel `file_surat`
 --
 ALTER TABLE `file_surat`
   ADD PRIMARY KEY (`id`),
   ADD KEY `surat_id` (`surat_id`);
 
 --
--- Indexes for table `golongan`
+-- Indeks untuk tabel `golongan`
 --
 ALTER TABLE `golongan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pangkat`
+-- Indeks untuk tabel `pangkat`
 --
 ALTER TABLE `pangkat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pegawai`
+-- Indeks untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`id`),
@@ -713,48 +555,14 @@ ALTER TABLE `pegawai`
   ADD KEY `pangkat_id` (`pangkat_id`);
 
 --
--- Indexes for table `skbws`
---
-ALTER TABLE `skbws`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tbl_skbws_filesk_id_foreign` (`filesk_id`);
-
---
--- Indexes for table `skppd`
---
-ALTER TABLE `skppd`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tbl_skppd_filesk_id_foreign` (`filesk_id`);
-
---
--- Indexes for table `skppdttl`
---
-ALTER TABLE `skppdttl`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tbl_skppdttl_filesk_id_foreign` (`filesk_id`);
-
---
--- Indexes for table `skppkttl`
---
-ALTER TABLE `skppkttl`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tbl_skppkttl_filesk_id_foreign` (`filesk_id`);
-
---
--- Indexes for table `sksatker`
---
-ALTER TABLE `sksatker`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tbl_sksatker_filesk_id_foreign` (`filesk_id`);
-
---
--- Indexes for table `surat`
+-- Indeks untuk tabel `surat`
 --
 ALTER TABLE `surat`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bidang_id` (`bidang_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -763,57 +571,34 @@ ALTER TABLE `users`
   ADD KEY `divisi_id_3` (`pegawai_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `skbws`
---
-ALTER TABLE `skbws`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `skppd`
---
-ALTER TABLE `skppd`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `skppdttl`
---
-ALTER TABLE `skppdttl`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `skppkttl`
---
-ALTER TABLE `skppkttl`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `sksatker`
---
-ALTER TABLE `sksatker`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `file_surat`
+-- Ketidakleluasaan untuk tabel `distribusi`
+--
+ALTER TABLE `distribusi`
+  ADD CONSTRAINT `distribusi_ibfk_1` FOREIGN KEY (`surat_id`) REFERENCES `surat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `distribusi_ibfk_2` FOREIGN KEY (`bidang_id`) REFERENCES `bidang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `file_surat`
 --
 ALTER TABLE `file_surat`
   ADD CONSTRAINT `file_surat_ibfk_1` FOREIGN KEY (`surat_id`) REFERENCES `surat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `pegawai`
+-- Ketidakleluasaan untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD CONSTRAINT `pegawai_ibfk_2` FOREIGN KEY (`golongan_id`) REFERENCES `golongan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -821,7 +606,13 @@ ALTER TABLE `pegawai`
   ADD CONSTRAINT `pegawai_ibfk_4` FOREIGN KEY (`bidang_id`) REFERENCES `bidang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `users`
+-- Ketidakleluasaan untuk tabel `surat`
+--
+ALTER TABLE `surat`
+  ADD CONSTRAINT `surat_ibfk_1` FOREIGN KEY (`bidang_id`) REFERENCES `bidang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`pegawai_id`) REFERENCES `pegawai` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
