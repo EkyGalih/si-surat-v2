@@ -13,11 +13,11 @@
                 </a>
                 <ul class="nav child_menu">
                     <li><a href="{{ route('agendaris-surat-masuk.index') }}">Surat Masuk</a></li>
-                    <li><a href="#">Surat Keluar</a></li>
+                    <li><a href="{{ route('agendaris-surat-keluar.index') }}">Surat Keluar</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('agendaris-distribusi.index') }}">
                     <i class="fa fa-share-alt-square"></i> Distribusi
                 </a>
             </li>

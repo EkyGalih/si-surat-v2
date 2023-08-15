@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
 
         // route agendaris
         $this->AgendarisSuratMasuk();
+        $this->AgendarisDistribusi();
     }
 
     // admin map
@@ -78,6 +79,12 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/agendaris/surat.php'));
+    }
+    public function AgendarisDistribusi()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/agendaris/distribusi.php'));
     }
 
 

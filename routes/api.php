@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Api\UserController;
+use App\Http\Controllers\Api\SuratController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::apiResource('/api/user', UserController::class);
+Route::apiResource('/api/surat', SuratController::class);
