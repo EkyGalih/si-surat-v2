@@ -29,7 +29,8 @@
             </div>
             <div class="x_content">
                 <div class="table-responsive">
-                    <a href="{{ route('agendaris-distribusi.create') }}" class="btn btn-secondary btn-sm" style="float: right;">
+                    <a href="{{ route('agendaris-distribusi.create') }}" class="btn btn-secondary btn-sm"
+                        style="float: right;">
                         <i class="fa fa-share-alt-square"></i> Distribusi Surat
                     </a>
                     <table class="table table-hover table-boredered table-striped">
@@ -45,8 +46,15 @@
                             @foreach ($distribusi as $dist)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $loop->Surat->asal_surat }}</td>
-                                    <td>{{ $loop->Surat->perihal }}</td>
+                                    <td>{{ $dist->Surat->asal_surat }}</td>
+                                    <td>{{ $dist->Surat->perihal }}</td>
+                                    <td>
+                                        <a href="{{ route('agendaris-distribusi.edit', $dist->surat_id) }}"
+                                            class="btn btn-warning btn-sm" data-bs-tooltip="tooltip" data-placement="top"
+                                            title="Ubah Distribusi Surat">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

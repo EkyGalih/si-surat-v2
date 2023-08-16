@@ -64,7 +64,9 @@
                                 <select name="surat_id" id="surat_id" class="form-control">
                                     <option value="">Cari Surat</option>
                                     @foreach ($surat as $surat)
-                                        <option value="{{ $surat->id }}">{{ $surat->perihal }}</option>
+                                        <option value="{{ $surat->id }}"
+                                            {{ $surat->id == $dist[0]->surat_id ? 'selected' : '' }}>{{ $surat->perihal }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -72,31 +74,34 @@
                         <div class="item input-group">
                             <label for="surat" class="control-label col-lg-3 col-md-3 col-xs-12">Tanggal Surat</label>
                             <div class="col-md-9 col-lg-9 col-xs-12">
-                                <input type="text" id="tgl_surat" class="form-control" readonly>
+                                <input type="text" id="tgl_surat" value="{{ $dist[0]->Surat->tgl_surat ?? '-' }}"
+                                    class="form-control" readonly>
                             </div>
                         </div>
                         <div class="item input-group">
                             <label for="surat" class="control-label col-lg-3 col-md-3 col-xs-12">Nomor Surat</label>
                             <div class="col-md-9 col-lg-9 col-xs-12">
-                                <input type="text" id="no_surat" class="form-control" readonly>
+                                <input type="text" id="no_surat" class="form-control"
+                                    value="{{ $dist[0]->Surat->no_surat ?? '-' }}" readonly>
                             </div>
                         </div>
                         <div class="item input-group">
                             <label for="surat" class="control-label col-lg-3 col-md-3 col-xs-12">Perihal</label>
                             <div class="col-md-9 col-lg-9 col-xs-12">
-                                <textarea id="perihal" class="form-control" readonly></textarea>
+                                <textarea id="perihal" class="form-control" readonly>{{ $dist[0]->Surat->perihal ?? '-' }}</textarea>
                             </div>
                         </div>
                         <div class="item input-group">
                             <label for="surat" class="control-label col-lg-3 col-md-3 col-xs-12">Tanggal Diterima</label>
                             <div class="col-md-9 col-lg-9 col-xs-12">
-                                <input type="text" id="tgl_terima" class="form-control" readonly>
+                                <input type="text" id="tgl_terima" class="form-control"
+                                    value="{{ $dist[0]->Surat->tgl_terima ?? '-' }}" readonly>
                             </div>
                         </div>
                         <div class="item input-group">
                             <label for="surat" class="control-label col-lg-3 col-md-3 col-xs-12">Isi Disposisi</label>
                             <div class="col-md-9 col-lg-9 col-xs-12">
-                                <p id="isi_disposisi"></p>
+                                <p id="isi_disposisi">{{ $dist[0]->Surat->isi_disposisi ?? '-' }}</p>
                             </div>
                         </div>
                     </div>
@@ -110,11 +115,16 @@
                                     <tbody>
                                         @foreach ($bidang as $bid)
                                             <tr>
-                                                <td style="border: 1px solid; padding: 2px 8px;">{{ $loop->iteration }}</td>
+                                                <td style="border: 1px solid; padding: 2px 8px;">{{ $loop->iteration }}
+                                                </td>
                                                 <td style="border: 1px solid; padding: 2px 8px;">{{ $bid->nama_bidang }}
                                                 </td>
-                                                <td style="border: 1px solid; padding: 2px 8px;"><input type="checkbox"
-                                                        name="bidang_id[]" class="chk" value="{{ $bid->id }}"></td>
+                                                <td style="border: 1px solid; padding: 2px 8px;">
+                                                    @foreach($dist as $key => $bid_id)
+                                                    <input type="checkbox" name="bidang_id[]" class="chk"
+                                                        value="{{ $bid->id }}" {{ $bid->id == $bid_id->bidang_id ? 'checked' : '' }}>
+                                                    @endforeach
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

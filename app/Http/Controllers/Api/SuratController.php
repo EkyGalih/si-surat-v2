@@ -9,12 +9,17 @@ use Illuminate\Http\Response;
 
 class SuratController extends Controller
 {
-    public function index()
+    public function show($id)
     {
         try {
             $surat = Surat::where('isi_disposisi', '=', NULL)
-            ->get();
-            return response()->json($surat, Response::HTTP_OK);
+                ->where('id', '=', $id)
+                ->select('tgl_surat', 'no_surat', 'perihal', 'tgl_terima', 'isi_disposisi')
+                ->first();
+            $response = [
+                $surat
+            ];
+            return response()->json($response, Response::HTTP_OK);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], Response::HTTP_FORBIDDEN);
         }
